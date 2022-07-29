@@ -1,0 +1,141 @@
+.main-b {
+	height: 650px;
+}
+.part-1 {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+.head-2 {
+	color: #5861ae;
+	font-weight: 700;
+	font-size: 62px;
+}
+.part1-child {
+	margin-top: 8rem;
+}
+
+.mar {
+	margin-bottom: 5rem;
+}
+.part1-child p {
+	font-weight: 400;
+	color: #565657;
+	text-transform: capitalize;
+	font-size: 20px;
+}
+.part1-child p:nth-child(5) {
+	font-size: 16px;
+	color: #565657;
+	padding: 0.8rem 0rem;
+}
+.bt-part-1 {
+	padding: 0.8rem 2rem;
+	color: #4552c1;
+	font-weight: bold;
+	border: 2px solid #4552c1;
+	border-radius: 4px;
+	background-color: rgb(255, 255, 255);
+}
+.bt-part-1:hover {
+	background-color: rgb(247, 247, 247);
+	cursor: pointer;
+}
+.bt-part-1:active {
+	background-color: rgb(255, 255, 255);
+}
+
+.line {
+	position: absolute;
+	right: 0;
+	height: 200px;
+	border-right: 4px solid #5861ae;
+	box-shadow: 0px -3px 6px #0000000b;
+	opacity: 0.5;
+}
+.part-2 {
+	background-color: #b9c0fd1a;
+}
+.h-line {
+	margin: 0;
+	padding: 0;
+	height: 2px;
+	background: #5861ae 0% 0% no-repeat padding-box;
+	box-shadow: 0px -3px 6px #0000000b;
+	opacity: 1;
+}
+
+.head-3 {
+	color: #5861ae;
+	font-size: 32px;
+	margin-top: 45px;
+	margin-left: 63px;
+}
+
+.part-2-box {
+	display: flex;
+	align-content: center;
+	margin-top: 40px;
+	margin-left: 63px;
+}
+
+.cust-input {
+	outline: none;
+	border: none;
+	border-bottom: 1px solid black;
+	border-radius: 0;
+	background: none;
+	width: 80%;
+	margin-bottom: 1rem;
+	padding: 1rem 0rem;
+	font: normal normal normal 17px/27px;
+	letter-spacing: 0.6px;
+}
+
+.reg-bt-2 {
+	padding: 0.8rem 2rem;
+	color: white;
+	font-weight: bold;
+	background: #5861ae 0% 0% no-repeat padding-box;
+	border-radius: 4px;
+	opacity: 1;
+    border: none;
+}
+.reg-bt-2:hover{
+    background-color: #545ca2;
+    cursor: pointer;
+    
+}
+.reg-bt-2:active{
+    background-color: #5e66af;
+    
+}
+.reg-bt-2-disable{
+	padding: 0.8rem 2rem;
+	color: rgb(95, 95, 95);
+	background-color: rgb(179, 179, 179);
+	font-weight: bold;
+	border-radius: 4px;
+	opacity: 1;
+    border: none;
+}
+.reg-bt-2-disable:hover{
+	cursor: not-allowed;
+}
+
+.checkbox-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5rem;
+}
+.register-btn{
+    margin-top: 2rem;
+	margin-right: 18rem;
+}
+.check-text{
+    font-size: 14px;
+    text-decoration: underline;
+    color: #5861AE;
+}

@@ -1,0 +1,43 @@
+.nav-box{
+    box-shadow: 0px 2px 48px #0000000F;
+}
+.main-head{
+    margin-left: 8rem;
+    letter-spacing: 1.8px;
+    font-weight: 700;
+    color: #5861AE;
+text-transform: uppercase;
+}
+.n-list{
+    font-weight: 600;
+    font-size: small;
+    color: #565657;
+}
+.n-element{
+font-weight: 600;
+color: rgb(155, 151, 151);
+text-transform: capitalize;
+border-left: 2px solid #E3E3E3;
+}
+.sign{
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    background-color: #5861AE;
+    color: #FFFFFF;
+}
+.sign:hover,
+.sign:active{
+    cursor: pointer;
+    background-color: #535caa;
+    box-shadow: 0px 4px 8px 2px #00000029;
+    
+}
+.cust-link{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.cust-link:hover,
+.cust-link:active{
+    color: #FFFFFF;
+    text-decoration: none;
+}
