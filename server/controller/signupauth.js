@@ -1,5 +1,6 @@
 const UserData = require('../models/registeredUser');
 
+
 const UniqueInputAuth = (req,res,next)=>{
     console.log(req.body)
     UserData.find({email:req.body.email})

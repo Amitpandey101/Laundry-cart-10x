@@ -1,4 +1,6 @@
 const bcrypt = require('bcryptjs');
+const UserData = require('../models/registeredUser');
+
 
 postUserData = async (req,res)=>{
     const {name,email,password,phone,state,city,address,pincode} = req.body;
@@ -12,6 +14,5 @@ postUserData = async (req,res)=>{
         res.status(200).json({message:'Successfully Registered User !!'})
     })
     .catch(()=>{res.status(500).json({error:"Failed to Registered"})})
-    res.send(passwordHash)
 }
 module.exports = postUserData;
