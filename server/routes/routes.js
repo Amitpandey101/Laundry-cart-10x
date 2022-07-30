@@ -15,15 +15,11 @@ router.post('/register',signUpAuth, userdata)
 
 router.post('/login',loginAuth)
 
-
-
-
-
-router.get('/',(req,res)=>{
-    res.send("Welcome to Base Page")
-})
 router.get("/pastorder",pastorder)
 
 router.delete("/deleteorder/:_id",deleteorder)
+router.get('/',(req,res)=>{
+    res.send("Welcome to Base Page")
+})
 
 module.exports = router;
