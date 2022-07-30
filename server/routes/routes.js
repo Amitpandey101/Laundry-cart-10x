@@ -13,7 +13,9 @@ router.post('/register',signUpAuth, userdata)
 
 router.post('/login',loginAuth)
 
-router.get('/userdata',authorization)
+
+
+
 
 router.get('/',(req,res)=>{
     res.send("Welcome to Base Page")

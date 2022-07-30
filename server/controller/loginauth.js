@@ -15,7 +15,7 @@ const loginAuth = async (req,res,next)=>{
             bcrypt.compare(password,data[0].password )
             .then((passwordMatch)=>{
                 if(passwordMatch){
-                   const token =  jwt.sign({phone:data[0].phone},process.env.SECRET_KEY);
+                   const token =  jwt.sign({email:data[0].email},process.env.SECRET_KEY);
                         res.status(200).json({token,message:"Successfully Logged In with phone as ID"})
                 }else{
                     return res.status(401).json({message:'Incorrect password !'});
