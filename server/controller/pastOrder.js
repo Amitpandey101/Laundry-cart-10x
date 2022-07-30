@@ -1,5 +1,6 @@
 const jwt=require("jsonwebtoken")
-const PastOrderModel=require("../models/pastOrder")
+const UserData = require('../models/registeredUser');
+const OrderModel=require("../models/pastOrder")
 
 
 const pastorder = async (req,res)=>{
@@ -7,7 +8,7 @@ if(req.headers.authorization){
         try {
           const email = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
           
-          PastOrderModel.find({email: email}).then((orders)=> {
+          OrderModel.find({email: email}).then((orders)=> {
               res.status(200).json({orders});
           })
         } catch(err) {
