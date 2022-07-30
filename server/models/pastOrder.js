@@ -4,6 +4,6 @@ const pastSchema = new mongoose.Schema({
  
 })
 
-const PastOrderModel =mongoose.model('postOrders' , postSchema)
+const PastOrderModel =mongoose.model('postOrders' , pastSchema)
 
 module.exports = PastOrderModel;
