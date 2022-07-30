@@ -1,6 +1,6 @@
 const jwt=require("jsonwebtoken")
-const UserData = require('../models/registeredUser');
-const OrderModel=require("../models/pastOrder")
+
+const OrderData=require("../models/order")
 
 
 const pastorder = async (req,res)=>{
@@ -8,8 +8,8 @@ if(req.headers.authorization){
         try {
           const email = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
           
-          OrderModel.find({email: email}).then((orders)=> {
-              res.status(200).json({orders});
+          OrderData.find({email: email}).then((orders)=> {
+              res.status(200).send({orders});
           })
         } catch(err) {
           res.status(400).send("User Not Authorized")
