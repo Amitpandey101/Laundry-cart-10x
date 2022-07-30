@@ -13,7 +13,7 @@ const OrderSchema = new mongoose.Schema({
   totalPrice: { type: String},
   totalItems: { type: String },
   status: { type: String },
-  products: { type: Array, default: []  },
+  products: { type: Array },
   user: { type: String },
 });
 
