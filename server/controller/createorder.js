@@ -7,7 +7,7 @@ const createorder= async (req,res)=>{
         const {email} = jwt.verify(req.headers.authorization,process.env.SECRET_KEY)
         UserData.find({email:email}).then((userdata)=>{
          if(userdata.length){
-             OrderData.create({Shirts:req.body.Shirts,Tshirts:req.body.Tshirts,Trousers:req.body.Trousers,Jeans:req.body.Jeans,Boxers:req.body.Boxers,Joggers:req.body.Joggers,Others:req.body.Others,user:userdata[0].email}).then((order)=>{
+             OrderData.create({date:req.body.date,totalPrice:req.body.totalPrice,totalItems:req.body.totalItems,status:req.body.status,products:req.body.productdetails,user:userdata[0].email}).then((order)=>{
           res.send({"status":"order submitted","data":{"body":order}})
              })
          }else{
