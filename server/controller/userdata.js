@@ -4,7 +4,8 @@ const UserData = require('../models/registeredUser');
 
 postUserData = async (req,res)=>{
     const {name,email,password,phone,state,city,address,pincode} = req.body;
-    if(phone.length !== 10){
+    console.log(req.body)
+    if(phone.length !=10){
         return res.status(401).json({error:'Please Enter valid Phone No'})
     }
     const passwordHash = await bcrypt.hash(password,10);
