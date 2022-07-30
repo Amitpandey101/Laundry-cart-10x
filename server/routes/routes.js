@@ -7,9 +7,6 @@ const userdata = require('../controller/userdata');
 const authorization = require('../controller/authorization');
 const createorder = require('../controller/createorder');
 
-
-router.get("/pastorder",pastorder)
-
 router.post('/register',signUpAuth, userdata)
 
 router.post('/login',loginAuth)
