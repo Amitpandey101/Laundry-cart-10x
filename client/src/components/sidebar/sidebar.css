@@ -1,0 +1,54 @@
+.sidebar {
+  position: fixed;
+  top: -1.5px;
+  left: 0px;
+  width: 57px;
+  height: 933px;
+  background: #5861ae 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.home {
+  position: fixed;
+  top: 119px;
+  left: 20px;
+  width: 22px;
+  height: 22px;
+
+  /* UI Properties */
+
+  background: transparent url("home-run (1).png") 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.more {
+  position: fixed;
+  top: 183px;
+  left: 20px;
+  width: 22px;
+  height: 22px;
+
+  /* UI Properties */
+
+  background: transparent url("more.png") 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.list-box {
+  position: fixed;
+  top: 231px;
+  left: 0px;
+  width: 57px;
+  height: 47px;
+
+  /* UI Properties */
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.list {
+  position: fixed;
+  top: 247px;
+  left: 20px;
+  width: 25px;
+  height: 18px;
+  background: transparent url("list.png") 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
