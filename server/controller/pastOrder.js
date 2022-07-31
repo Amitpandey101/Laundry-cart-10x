@@ -21,6 +21,3 @@ if(req.headers.authorization){
 };
 
 module.exports=pastorder;
-
-
-

@@ -2,7 +2,8 @@ import Signup from './components/signup/Signup'
 import Login from './components/login/Login';
 import './App.css';
 import { Switch , Route } from 'react-router-dom';
-// import Sidebar from './components/sidebar/sidebar';
+import Copyright from './components/copyright/copyright';
+import Header2 from './components/header-2/header2';
 import Pastorder from './components/pastorder/pastorder';
 
 
@@ -11,7 +12,9 @@ function App() {
       <>
      
       <Switch>
-       <Pastorder></Pastorder>
+        <Route path='/pastorder'>
+        <Pastorder></Pastorder>
+        </Route>
       <Route exact path='/register'>
       <Signup></Signup>
       </Route>
@@ -19,6 +22,8 @@ function App() {
       <Login></Login>
       </Route>
       </Switch>
+      
+      <Copyright></Copyright>
     
       
      

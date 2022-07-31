@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
   washing: { type: Boolean, default: false },
   ironing: { type: Boolean, default: false },
   drywash: { type: Boolean, default: false },
-  chemicalwash: { type: Boolean, default: false },
+  chemicalwash: { type: Boolean, default: false }
 });
 const OrderSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
@@ -14,7 +14,7 @@ const OrderSchema = new mongoose.Schema({
   totalItems: { type: String },
   status: { type: String },
   products: { type: Array, default: []  },
-  user: { type: String },
+  user: { type: String }
 });
 
 const OrderData = new mongoose.model('LaundryUserOrders' , OrderSchema)

@@ -1,15 +1,18 @@
-import React from 'react'
-import Header from "../header/Header"
-import Sidebar from '../sidebar/sidebar';
-import "./pastorder.css"
 
+import Header2 from '../header-2/header2'
+import Sidebar from '../sidebar/sidebar'
+import { useState } from 'react'
 
 
 const Pastorder = () => {
+    const [order,setorder] = useState('')
+
   return (
     <>
-    <Header></Header>
+
+    <Header2></Header2>
     <Sidebar></Sidebar>
+
     <span className='order'>Orders | 0</span>
     <span className='box-create'></span>
     <span className='create'>Create</span>
@@ -49,6 +52,8 @@ const Pastorder = () => {
   </tbody>
 </table>
 </div>
+
+  
     </>
   )
 }

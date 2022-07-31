@@ -1,5 +1,5 @@
 .main-b {
-	height: 650px;
+	height: 50px;
 }
 .part-1 {
 	display: flex;
@@ -13,7 +13,7 @@
 	font-size: 62px;
 }
 .part1-child {
-	margin-top: 8rem;
+	margin-top: 2rem;
 }
 
 .mar {
@@ -69,10 +69,13 @@
 .head-3 {
 	color: #5861ae;
 	font-size: 32px;
-	margin-top: 45px;
+	margin-top: 40px;
 	margin-left: 63px;
 }
-
+.c-box{
+	margin-top: -3rem;
+	margin-left: -2rem;
+}
 .part-2-box {
 	display: flex;
 	align-content: center;
@@ -86,30 +89,32 @@
 	border-bottom: 1px solid black;
 	border-radius: 0;
 	background: none;
-	width: 80%;
-	margin-bottom: 1rem;
+	width: 100%;
+	margin-bottom: .5rem;
 	padding: 1rem 0rem;
-	font: normal normal normal 17px/27px;
 	letter-spacing: 0.6px;
 }
-
-.reg-bt-2 {
+.cust-input-1:hover{
+	border-bottom: 1px solid #5861AE;;
+	box-shadow: none;
+}
+.reg-bt-2{
 	padding: 0.8rem 2rem;
 	color: white;
 	font-weight: bold;
-	background: #5861ae 0% 0% no-repeat padding-box;
-	border-radius: 4px;
+	background-color: #5861ae;
 	opacity: 1;
-    border: none;
+	
+	
 }
 .reg-bt-2:hover{
-    background-color: #545ca2;
-    cursor: pointer;
-    
+	background-color: #545ca2;
+	cursor: pointer;
+	outline: none;
 }
 .reg-bt-2:active{
-    background-color: #5e66af;
-    
+	background-color: #5e66af;
+	outline: none;
 }
 .reg-bt-2-disable{
 	padding: 0.8rem 2rem;
@@ -118,24 +123,69 @@
 	font-weight: bold;
 	border-radius: 4px;
 	opacity: 1;
-    border: none;
+	border: none;
 }
-.reg-bt-2-disable:hover{
+.reg-bt-2-disable:hover {
 	cursor: not-allowed;
 }
 
-.checkbox-div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 5rem;
+.checkbox-div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 5rem;
 }
-.register-btn{
-    margin-top: 2rem;
+.register-btn {
+	margin-top: 2rem;
 	margin-right: 18rem;
 }
-.check-text{
-    font-size: 14px;
-    text-decoration: underline;
-    color: #5861AE;
+.check-text {
+	font-size: 14px;
+	text-decoration: underline;
+	color: #5861ae;
+	margin-bottom: 3rem;
+}
+
+.new-label{
+	display: block;
+	position: absolute;
+	font-size: .8rem;
+	color: #5861AE;
+	transform: translate(0rem, -5.5rem) ;
+	transition: transform, opacity, 0.1s ;
+	pointer-events: none;
+}
+
+.new-label::after{
+
+      content:'';
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+		
+      z-index:-1;
+}
+
+
+.cust-input:placeholder-shown ~ label{
+	transform:translate(0rem,-4.28rem);
+	opacity:0;
+	
+	font-size: 1rem;
+	visibility:0;
+	background-color:transparent;
+	color:#000;
+}
+
+.cust-input:placeholder-shown ~ label::after{
+	transform:translateX(-200%);
+	transition:2s;
+}
+.lock{
+margin: -1.5rem;
+}
+.lock:hover{
+	cursor: pointer;
 }

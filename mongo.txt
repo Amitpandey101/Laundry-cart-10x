@@ -1,5 +1,2 @@
 mongodb+srv://laundrycart:<password>@laundrycart.ip7w6.mongodb.net/?retryWrites=true&w=majority
 PASSWORD=Laundry%40123
-
-MONGO_URL=mongodb+srv://laundrycart:<password>@laundrycart.ip7w6.mongodb.net/?retryWrites=true&w=majority
-PASSWORD=Laundry%40123

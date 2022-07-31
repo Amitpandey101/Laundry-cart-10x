@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Input from "@material-ui/core/Input";
+import Input from '@material-ui/core/Input';
 
 const allStates = State.getStatesOfCountry('IN');
 const stateNames = allStates.map((data) => {
@@ -54,7 +54,7 @@ const Signup = () => {
 		password: '',
 		showPassword: false,
 	});
-	console.log(values.password)
+	console.log(values.password);
 	const handleClickShowPassword = () => {
 		setValues({ ...values, showPassword: !values.showPassword });
 	};
@@ -79,161 +79,210 @@ const Signup = () => {
 							<p className="mb-0 text-capitalize">Doorstep wash &</p>
 							<p className="mar text-capitalize">dryclean service</p>
 							<p className="text-capitalize">Already have account</p>
-							<Link to='/' className="bt-part-1">Sign In</Link>
+							<Link to="/" className="bt-part-1">
+								Sign In
+							</Link>
 						</div>
 						<div className="line"></div>
 					</div>
 					<div className="col-lg-9 part-2">
-						<form>
-							<div>
-								<h3 className="head-3">REGISTER</h3>
+						<div className="container c-box">
+							<form>
+								<div>
+									<h3 className="head-3">REGISTER</h3>
 
-								<div className="row part-2-box">
-									<div className="col-lg-6">
-										<input
-											type="text"
-											className="cust-input"
-											autoComplete="off"
-											placeholder="Name"
-											name="name"
-											required
-										/>
-									</div>
-									<div className="col-lg-6">
-										<input
-											type="text"
-											className="cust-input"
-											placeholder="Email"
-											name="email"
-											autoComplete="off"
-											required
-										/>
-									</div>
-									<div className="col-lg-6">
-										<Input
-											type={values.showPassword ? 'text' : 'password'}
-											className="cust-input"
-											placeholder="Password"
-											name="password"
-											autoComplete="off"
-											required
-											onChange={handlePasswordChange('password')}
-											value={values.password}
-											endAdornment={
-												<InputAdornment position="end">
-													<IconButton
-														onClick={handleClickShowPassword}
-														onMouseDown={handleMouseDownPassword}
-													>
-														{values.showPassword ? (
-															<Visibility />
-														) : (
-															<VisibilityOff />
-														)}
-													</IconButton>
-												</InputAdornment>
-											}
-										/>
-									</div>
-									<div className="col-lg-6">
-										<input
-											type="text"
-											className="cust-input"
-											placeholder="Phone (+91)"
-											name="phone"
-											minLength="10"
-											maxLength="10"
-											autoComplete="off"
-											required
-										/>
-									</div>
+									<div className="row part-2-box">
+										<div className="col-lg-6 ">
+											<div className="input-wrapper"></div>
+											<input
+												type="text"
+												id="name"
+												placeholder="Name"
+												className="cust-input"
+												autoComplete="off"
+												required
+											/>
+											<label className="new-label" for="name">
+												Name
+											</label>
+										</div>
+										<div className="col-lg-6 ">
+											<div className="input-wrapper"></div>
+											<input
+												type="text"
+												id="email"
+												placeholder="Email"
+												className="cust-input"
+												autoComplete="off"
+												required
+											/>
+											<label className="new-label" for="email">
+												Email
+											</label>
+										</div>
+										<div className="col-lg-6 ">
+											<div className="input-wrapper"></div>
+											<input
+												type={values.showPassword ? 'text' : 'password'}
+												name="password"
+												autoComplete="off"
+												required
+												id="password"
+												placeholder="Password"
+												className="cust-input"
+												onChange={handlePasswordChange('password')}
+												value={values.password}
+											/>
+											<label className="new-label" for="password">
+												Password
+											</label>
+											<span
+												className="lock"
+												onClick={handleClickShowPassword}
+												onMouseDown={handleMouseDownPassword}
+											>
+												{values.showPassword ? (
+													<i>
+														<span class="material-symbols-outlined">
+															lock_open
+														</span>
+													</i>
+												) : (
+													<i>
+														<span class="material-symbols-outlined">lock</span>
+													</i>
+												)}
+											</span>
+										</div>
+										
+										<div className="col-lg-6 ">
+											<div className="input-wrapper"></div>
+											<input
+												type="text"
+												id="phone"
+												placeholder="Phone (+91)"
+												className="cust-input"
+												minLength="10"
+												maxLength="10"
+												autoComplete="off"
+												required
+											/>
+											<label className="new-label" for="phone">
+												Name
+											</label>
+										</div>
 
-									<div className="col-lg-6 text-muted">
-										<select
-											name="states"
-											className="cust-input"
-											placeholder="States"
-											value={selectedState}
-											onChange={stateChangeHandler}
-											autoComplete="off"
-											required
-										>
-											<option className="option-placeholder">State</option>
-											{stateNames.map((name, idx) => (
-												<option key={idx}>{name}</option>
-											))}
-										</select>
-									</div>
-
-									<div className="col-lg-6">
-										<select
-											name="city"
-											className="cust-input"
-											placeholder="City"
-											value={selectedCity}
-											onChange={cityChangeHandler}
-											autoComplete="off"
-											required
-										>
-											<option className="option-placeholder">City</option>
-											{selectedState &&
-												allCities.map((name, idx) => (
+										<div className="col-lg-6 text-muted">
+											<select
+												name="states"
+												className="cust-input"
+												id="state"
+												placeholder="States"
+												value={selectedState}
+												onChange={stateChangeHandler}
+												autoComplete="off"
+												required
+											>
+												<option selected>State</option>
+												{stateNames.map((name, idx) => (
 													<option key={idx}>{name}</option>
 												))}
-										</select>
-									</div>
-									<div className="col-lg-6">
-										<input
-											type="text"
-											className="cust-input"
-											placeholder="Address"
-											name="address"
-											autoComplete="off"
-											required
-										/>
-									</div>
-									<div className="col-lg-6">
-										<input
-											type="text"
-											className="cust-input"
-											placeholder="Pincode"
-											name="pincode"
-											minLength="6"
-											maxLength="6"
-											autoComplete="off"
-											required
-										/>
+											</select>
+											{selectedState && <label className="new-label" for="state">
+												State
+											</label>}
+											
+										</div>
+
+										<div className="col-lg-6">
+											<select
+												name="city"
+												id='city'
+												className="cust-input"
+												
+												value={selectedCity}
+												onChange={cityChangeHandler}
+												autoComplete="off"
+												required
+											>
+												<option className="option-placeholder">District</option>
+												{selectedState &&
+													allCities.map((name, idx) => (
+														<option key={idx}>{name}</option>
+													))}
+											</select>
+											{selectedCity && <label className="new-label" for="city">
+												District
+											</label>}
+										</div>
+
+										<div className="col-lg-6 ">
+											<div className="input-wrapper"></div>
+											<input
+												type="text"
+												id="address"
+												placeholder="Address"
+												className="cust-input"
+												name='address'
+												autoComplete="off"
+												required
+											/>
+											<label className="new-label" for="address">
+												Address
+											</label>
+										</div>
+
+										<div className="col-lg-6 ">
+											<div className="input-wrapper"></div>
+											<input
+												type="text"
+												id="pincode"
+												placeholder="Pincode"
+												className="cust-input"
+												name='pincode'
+												minLength="6"
+												maxLength="6"
+												autoComplete="off"
+												required
+											/>
+											<label className="new-label" for="pincode">
+												Pincode
+											</label>
+										</div>
+									
 									</div>
 								</div>
-							</div>
-							<div className="checkbox-div">
-								<label className="form-check-label check-text">
-									<input
-										type="checkbox"
-										className="form-check-input"
-										value={ticked}
-										onChange={() => tickCheckHandler('clicked')}
-									/>
-									I agree to Terms & Condition receiving marketing and
-									promotional materials
-								</label>
-								<div className="register-btn">
-									{!ticked ? (
-										<button type="submit" className="reg-bt-2">
-											Register
-										</button>
-									) : (
-										<button className="reg-bt-2-disable">Register</button>
-									)}
+								<div>
+									
 								</div>
-							</div>
-						</form>
+								<div className="container checkbox-div">
+									<label className="form-check-label check-text">
+										<input
+											type="checkbox"
+											className="form-check-input"
+											value={ticked}
+											onChange={() => tickCheckHandler('clicked')}
+										/>
+										I agree to Terms & Condition receiving marketing and
+										promotional materials
+									</label>
+									<div className="mx-auto">
+										{!ticked ? (
+											<button type="submit" className="reg-bt-2">
+												Register
+											</button>
+										) : (
+											<button className="reg-bt-2-disable">Register</button>
+										)}
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</section>
 			<hr className="h-line"></hr>
 			<Footer></Footer>
-			<Copyright></Copyright>
 		</>
 	);
 };

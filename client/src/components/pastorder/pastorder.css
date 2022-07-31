@@ -1,3 +1,4 @@
+
 .table{
     position:fixed;
     top: 172px;
@@ -68,4 +69,8 @@ height: 21px;
 
 
 opacity: 1;
+}
+.box{
+    min-height: 80vh;
+
 }

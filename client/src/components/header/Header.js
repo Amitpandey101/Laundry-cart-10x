@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <>
-  <nav className="navbar navbar-expand-md p-0 font-size-sm nav-box" id="z-index">
+  <nav className="navbar navbar-expand-md p-0 font-size-sm nav-box">
   <span className="navbar-brand py-2 main-head" >Laundry</span>
  
 
