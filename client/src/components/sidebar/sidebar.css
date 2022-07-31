@@ -1,0 +1,28 @@
+.box{
+    min-height: 80vh;
+}
+
+.aside-box{
+margin: 0;
+width: 90px;
+height: 80vh;
+background-color: #5861AE;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.past-icon{
+    width: 30px;
+    margin-top: 10px;
+}
+.past-icon-list{
+    width: 30px;
+   margin: 15px 0 15px 15px;
+}
+.list-icon{
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+    width: inherit;
+}
