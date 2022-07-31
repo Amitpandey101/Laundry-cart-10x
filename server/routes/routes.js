@@ -8,7 +8,7 @@ const authorization = require('../controller/authorization');
 const pastorder=require("../controller/pastorder")
 const deleteorder=require("../controller/orders")
 
-
+const createorder = require('../controller/createorder');
 
 
 router.post('/register',signUpAuth, userdata)
@@ -24,4 +24,7 @@ router.get("/pastorder",pastorder)
 
 router.delete("/deleteorder/:_id",deleteorder)
 
+router.post('/createorder',createorder)
+
 module.exports = router;
+

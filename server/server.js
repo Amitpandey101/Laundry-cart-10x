@@ -32,4 +32,4 @@ app.use(router)
 //Server Connection Setup
 app.listen(port , ()=>{
     console.log('SERVER CONNECTED !!')
-})
+}) 
