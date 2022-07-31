@@ -18,12 +18,12 @@ const loginAuth = async (req,res,next)=>{
                    const token =  jwt.sign({email:data[0].email},process.env.SECRET_KEY);
                         res.status(200).json({token,message:"Successfully Logged In with phone as ID"})
                 }else{
-                    return res.status(401).json({message:'Incorrect password !'});
+                    return res.status(400).json({message:'Incorrect password !'});
                 }
             })
                 
             }else{
-                res.status(401).json({message:'Invalid Phone No. !!'})
+                res.json({message:'Invalid Phone No. !!'})
             }
 
            
@@ -38,12 +38,12 @@ const loginAuth = async (req,res,next)=>{
                       const token =  jwt.sign({email:data[0].email},process.env.SECRET_KEY);
                             res.status(200).json({token,message:"Successfully Logged In with email as ID"});
                     }else{
-                        return res.status(401).json({message:'Incorrect password !'})
+                        return res.json({message:'Incorrect password !'})
                     }
                 })
                 
             }else{
-                return res.status(401).json({message:'Invalid Email !!'})
+                return res.json({message:'Invalid Email !!'})
             }
         })
     }

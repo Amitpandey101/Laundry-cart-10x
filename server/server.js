@@ -5,7 +5,7 @@ const port = process.env.PORT || 3001;
 const mongoose = require('mongoose');
 const router = require('./routes/routes');
 const crypto = require('crypto');
-const bodyparser=require("body-parser")
+const cors = require('cors')
 const multer = require('multer');
 const upload = multer();
 const secretKey = crypto.randomBytes(64).toString('hex');
@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
-
+app.use(cors());
 
 
 //Middlewares --- Routers
