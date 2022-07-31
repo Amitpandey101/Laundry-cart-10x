@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import Header from '../header/Header';
 import './signup.css';
 import Footer from '../Footer/Footer';
-import Copyright from '../copyright/copyright';
 import { State, City } from 'country-state-city';
 import { Link } from 'react-router-dom';
-
-import IconButton from '@material-ui/core/IconButton';
-import Visibility from '@material-ui/icons/Visibility';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Input from '@material-ui/core/Input';
+import { useHistory } from 'react-router-dom';
+import axios from "axios";
 
 const allStates = State.getStatesOfCountry('IN');
 const stateNames = allStates.map((data) => {
@@ -18,17 +13,56 @@ const stateNames = allStates.map((data) => {
 });
 
 const Signup = () => {
+	const history = useHistory();
 	const [selectedState, setselectedState] = useState('');
 	const [selectedCity, setSelectedCity] = useState('');
 	const [allCities, setAllCities] = useState();
+	const [inValidEmail, setInvalidEmail] = useState(false);
+	const [inValidPhone, setInvalidPhone] = useState(false);
+	const [inValidState, setInvalidState] = useState(false);
+	const [inValidcity, setInvalidcity] = useState(false);
+
+	const [userName, setuserName] = useState('');
+	const [userEmail, setuserEmail] = useState('');
+	const [userPhone, setuserPhone] = useState('');
+	const [userAddress, setuserAddress] = useState('');
+	const [areaCode, setareaCode] = useState('');
+
 	const [ticked, setTick] = useState(true);
+	const [values, setValues] = useState({
+		password: '',
+		showPassword: false,
+	});
+
+	//Details
+	const nameChangeHandler = (name) => {
+		setuserName(name)
+	}
+	const emailChangeHandler = (email) => {
+		setInvalidEmail(false)
+		setuserEmail(email)
+	}
+	const phoneChangeHandler = (phone) => {
+		setInvalidPhone(false)
+		setuserPhone(phone)
+	}
+	const addressChangeHandler = (address) => {
+		setuserAddress(address)
+	}
+	const pincodeChangeHandler = (pin) => {
+		setareaCode(pin)
+	}
+
+	//State and City
 	const cityChangeHandler = (e) => {
+		setInvalidcity(false)
 		setSelectedCity(e.target.value);
-		console.log(e.target.value);
 	};
 	const stateChangeHandler = (e) => {
+		setSelectedCity('')
+		setInvalidState(false)
 		setselectedState(e.target.value);
-		console.log(e.target.value);
+
 		const state = allStates.filter((state) => {
 			return state.name === e.target.value;
 		});
@@ -49,12 +83,8 @@ const Signup = () => {
 		}
 	};
 
-	//pass
-	const [values, setValues] = useState({
-		password: '',
-		showPassword: false,
-	});
-	console.log(values.password);
+	//password
+
 	const handleClickShowPassword = () => {
 		setValues({ ...values, showPassword: !values.showPassword });
 	};
@@ -65,6 +95,64 @@ const Signup = () => {
 
 	const handlePasswordChange = (prop) => (event) => {
 		setValues({ ...values, [prop]: event.target.value });
+	};
+
+	//Form
+	const regFormHandler = (e) => {
+		e.preventDefault();
+		let email = ''
+		let phone = ''
+
+		if (
+			userEmail.trim().includes('@') &&
+			userEmail.trim().includes('.') &&
+			userEmail.trim().charCodeAt(0) > 64
+		) {
+			email = userEmail;
+		} else {
+			setInvalidEmail(true);
+			return;
+		}
+		
+		
+		if (userPhone.trim().length === 10 && userPhone.trim().charCodeAt(0) > 54 && userPhone.trim().charCodeAt(0) < 58){
+			phone = userPhone;
+		} else {
+			setInvalidPhone(true);
+			return;
+		}
+
+		if(!selectedCity){
+			setInvalidcity(true)
+			return;
+		}
+		if(!selectedState){
+			setInvalidState(true);
+			return;
+		}
+
+		
+
+		const formData = {
+			name: userName,
+			email: userEmail,
+			password: values.password,
+			phone: userPhone,
+			state: selectedState,
+			city: selectedCity,
+			address: userAddress,
+			pincode: areaCode,
+		};
+		console.log(formData)
+		axios.post('http://localhost:3001/register',formData)
+		.then((res) => {
+			console.log(res.response.data)
+			history.push('/')
+		})
+		.catch((err)=>{console.log(err)})
+
+		
+		// history.push('/')
 	};
 
 	return (
@@ -87,7 +175,7 @@ const Signup = () => {
 					</div>
 					<div className="col-lg-9 part-2">
 						<div className="container c-box">
-							<form>
+							<form onSubmit={regFormHandler}>
 								<div>
 									<h3 className="head-3">REGISTER</h3>
 
@@ -99,10 +187,12 @@ const Signup = () => {
 												id="name"
 												placeholder="Name"
 												className="cust-input"
+												value={userName}
+												onChange={(e)=>nameChangeHandler(e.target.value)}	
 												autoComplete="off"
 												required
 											/>
-											<label className="new-label" for="name">
+											<label className="new-label" htmlFor="name">
 												Name
 											</label>
 										</div>
@@ -112,11 +202,16 @@ const Signup = () => {
 												type="text"
 												id="email"
 												placeholder="Email"
-												className="cust-input"
+												className={inValidEmail ? "cust-input col-war " :"cust-input"}
+												value={userEmail}
+												onChange={(e)=>emailChangeHandler(e.target.value)}
 												autoComplete="off"
 												required
 											/>
-											<label className="new-label" for="email">
+											{inValidEmail && <label className="new-label-warning-reg" htmlFor="email">
+											<i>Please enter a valid Email id</i>
+											</label>}
+											<label className="new-label" htmlFor="email">
 												Email
 											</label>
 										</div>
@@ -133,7 +228,7 @@ const Signup = () => {
 												onChange={handlePasswordChange('password')}
 												value={values.password}
 											/>
-											<label className="new-label" for="password">
+											<label className="new-label" htmlFor="password">
 												Password
 											</label>
 											<span
@@ -143,32 +238,37 @@ const Signup = () => {
 											>
 												{values.showPassword ? (
 													<i>
-														<span class="material-symbols-outlined">
+														<span className="material-symbols-outlined">
 															lock_open
 														</span>
 													</i>
 												) : (
 													<i>
-														<span class="material-symbols-outlined">lock</span>
+														<span className="material-symbols-outlined">lock</span>
 													</i>
 												)}
 											</span>
 										</div>
-										
+
 										<div className="col-lg-6 ">
 											<div className="input-wrapper"></div>
 											<input
 												type="text"
 												id="phone"
 												placeholder="Phone (+91)"
-												className="cust-input"
+												className={inValidPhone ? "cust-input col-war " :"cust-input"}
+												value={userPhone}
+												onChange={(e)=>phoneChangeHandler(e.target.value)}
 												minLength="10"
 												maxLength="10"
 												autoComplete="off"
 												required
 											/>
-											<label className="new-label" for="phone">
-												Name
+											{inValidPhone && <label className="new-label-warning-reg" htmlFor="email">
+											<i>Please enter a valid Phone Number</i>
+											</label>}
+											<label className="new-label" htmlFor="phone">
+											Phone (+91)
 											</label>
 										</div>
 
@@ -183,37 +283,45 @@ const Signup = () => {
 												autoComplete="off"
 												required
 											>
-												<option selected>State</option>
+												<option>State</option>
 												{stateNames.map((name, idx) => (
 													<option key={idx}>{name}</option>
 												))}
 											</select>
-											{selectedState && <label className="new-label" for="state">
-												State
+											{inValidState && <label className="new-label-warning-reg" htmlFor="email">
+											<i>Please Select your state</i>
 											</label>}
-											
+											{selectedState && (
+												<label className="new-label" htmlFor="state">
+													State
+												</label>
+											)}
 										</div>
 
 										<div className="col-lg-6">
 											<select
 												name="city"
-												id='city'
+												id="city"
 												className="cust-input"
-												
 												value={selectedCity}
 												onChange={cityChangeHandler}
 												autoComplete="off"
 												required
 											>
-												<option className="option-placeholder">District</option>
+												<option>District</option>
 												{selectedState &&
 													allCities.map((name, idx) => (
 														<option key={idx}>{name}</option>
 													))}
 											</select>
-											{selectedCity && <label className="new-label" for="city">
-												District
+											{inValidcity && <label className="new-label-warning-reg" htmlFor="email">
+											<i>Please Select your City</i>
 											</label>}
+											{selectedCity && (
+												<label className="new-label" htmlFor="city">
+													District
+												</label>
+											)}
 										</div>
 
 										<div className="col-lg-6 ">
@@ -222,12 +330,14 @@ const Signup = () => {
 												type="text"
 												id="address"
 												placeholder="Address"
+												value={userAddress}
+												onChange={(e)=>addressChangeHandler(e.target.value)}
 												className="cust-input"
-												name='address'
+												name="address"
 												autoComplete="off"
 												required
 											/>
-											<label className="new-label" for="address">
+											<label className="new-label" htmlFor="address">
 												Address
 											</label>
 										</div>
@@ -239,22 +349,21 @@ const Signup = () => {
 												id="pincode"
 												placeholder="Pincode"
 												className="cust-input"
-												name='pincode'
+												value={areaCode}
+												onChange={(e)=>pincodeChangeHandler(e.target.value)}
+												name="pincode"
 												minLength="6"
 												maxLength="6"
 												autoComplete="off"
 												required
 											/>
-											<label className="new-label" for="pincode">
+											<label className="new-label" htmlFor="pincode">
 												Pincode
 											</label>
 										</div>
-									
 									</div>
 								</div>
-								<div>
-									
-								</div>
+								<div></div>
 								<div className="container checkbox-div">
 									<label className="form-check-label check-text">
 										<input

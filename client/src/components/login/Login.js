@@ -4,25 +4,33 @@ import Footer from '../Footer/Footer';
 import './login.css';
 import  { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
 const Login = () => {
 	const history = useHistory()
+	useEffect(()=>{
+		if(localStorage.getItem('token')){
+			history.push('/pastorder')
+		}
+	})
+
+	
 	const [id, setId] = useState('');
-	const [inValid, setInvalid] = useState(false);
+	const [inValidEmail, setInvalidEmail] = useState(false);
+	const [inValidPhone, setInvalidPhone] = useState(false);
+
 	const [values, setValues] = useState({
 		password: '',
 		showPassword: false,
 	});
 
 	const idHandler = (val) => {
-		setInvalid(false);
-		setId(val);
+		setInvalidEmail(false);
+		setInvalidPhone(false);
+		setId(() => val);
 	};
-	
-	
-	
-	console.log(values.password);
 	const handleClickShowPassword = () => {
 		setValues({ ...values, showPassword: !values.showPassword });
 	};
@@ -38,31 +46,62 @@ const Login = () => {
 
 	const formSubmitHandle = (e) => {
 		e.preventDefault();
-		let phone = '';
-		let email = '';
+		let email;
+		let phone;
 		if (
 			id.trim().includes('@') &&
 			id.trim().includes('.') &&
 			id.trim().charCodeAt(0) > 64
 		) {
+		
 			email = id;
-			console.log('email');
+			
 		} else if (id.trim().length === 10) {
+			
 			phone = id;
-			console.log('phone no.');
+			
 		} else {
-			setInvalid(true);
-			return;
+			if( id.trim().charCodeAt(0) > 64 ){
+				setInvalidEmail(true)
+				return;
+			}else{
+				setInvalidPhone(true)
+				return;
+			}
+			
 		}
+	
 		const data = {
 			email: email,
 			phone: phone,
 			password: values.password,
 		};
 		console.log(data);
-		setId('');
-		setValues({password:'',showPassword:false})
-		history.push('/pastorder')
+		axios.post('http://localhost:3001/login',data)
+		.then((res) => {
+			// console.log(res.data.token)
+			if(!res.data.token){
+				
+				if(res.data.message.includes('Email') ){
+					// alert(res.data.message)
+					setInvalidEmail(true)
+				}else if(res.data.message.includes('Phone')){
+					// alert(res.data.message)
+					setInvalidPhone(true)
+				}else{
+					alert(res.data.message)
+				}
+			}else{
+			localStorage.setItem('token',res.data.token)
+			history.push('/pastorder')
+			}
+			
+			
+		})
+
+		// setId('');
+		// setValues({password:'',showPassword:false})
+		
 	};
 	return (
 		<>
@@ -95,14 +134,17 @@ const Login = () => {
 												type="text"
 												id="email"
 												placeholder="Email/Phone"
-												className={inValid ? "cust-input col-war " :"cust-input"}
+												className={(inValidEmail || inValidPhone) ? "cust-input col-war " :"cust-input"}
                                                 value={id}
                                                 onChange={(e)=>{idHandler(e.target.value)}}
 												autoComplete="off"
 												required
 											/>
-                                            {inValid && <label className="new-label-warning" htmlFor="email">
-											<i>Please enter a valid ID</i>
+                                            {inValidEmail && <label className="new-label-warning" htmlFor="email">
+											<i>Please enter a valid Email</i>
+											</label>}
+											{inValidPhone && <label className="new-label-warning" htmlFor="email">
+											<i>Please enter a valid Phone number</i>
 											</label>}
 											<label className="new-label" htmlFor="email">
 												Email/Phone

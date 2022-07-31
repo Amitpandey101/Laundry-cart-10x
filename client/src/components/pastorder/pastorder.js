@@ -1,10 +1,19 @@
 import React from 'react'
 import Header2 from '../header-2/header2'
 import Sidebar from '../sidebar/sidebar'
-import { useState } from 'react'
+import { useState ,useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const Pastorder = () => {
+  const history = useHistory();
+  useEffect(()=>{
+    if(!localStorage.getItem('token')){
+      history.push('/')
+    }
+    
+  },[])
     const [order,setorder] = useState('')
+    
 
   return (
     <>

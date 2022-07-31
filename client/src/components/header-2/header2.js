@@ -6,6 +6,7 @@ const Header2 = () => {
     const history = useHistory()
     const logoutHandler = ()=>{
         alert("Are you sure Want to Logout")
+		localStorage.removeItem('token')
         history.push('/')
     }
 
