@@ -144,7 +144,7 @@ const Signup = () => {
 			pincode: areaCode,
 		};
 		console.log(formData)
-		axios.post('http://localhost:3001/register',formData)
+		axios.post('http://localhost:3002/register',formData)
 		.then((res) => {
 			if(res.data.message){
 				console.log('successful')

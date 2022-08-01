@@ -80,6 +80,21 @@
     left:500px;
     width: 400px;
    
+
+   
+}
+.buttonalign{
+ align-items: center;
+ background-color: #5861ae;
+ align-self: center;
+ align-content: center;
+}
+.alertimage{
+  width: 30px;
+  height: auto;
+}
+.popupheader{
+  background-color: #5861ae;
 }
 .close{
     background-color: #5861ae;
@@ -103,4 +118,9 @@
 .Offcanvas{
     width: 800px;
 }
-
+.eye{
+  width: 20px;
+  height:20px;
+  cursor:"pointer";
+  background-color: white;
+}

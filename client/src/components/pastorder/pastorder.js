@@ -1,60 +1,63 @@
-import { useState,useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Header2 from "../header-2/header2";
 import Sidebar from "../sidebar/sidebar";
 import "./pastorder.css";
-import { Modal, CloseButton } from "react-bootstrap";
 import axios from "axios";
+import { OffcanvasBody } from "react-bootstrap";
+import { Modal, CloseButton } from "react-bootstrap";
 const Pastorder = () => {
   const [modalShow, setModalShow] = useState(false);
   const [cancelorder, setcancelorder] = useState("Cancel Order");
-const [orderData,setorderData]=useState([])
+  const [orderData, setorderData] = useState([]);
+  const [order, setorder] = useState("");
+  const history = useHistory();
+  // const Routehandler = () =>{
+  //   history.push('/createorder')
+  // }
+  const createorderHandler = () => {
+    history.push("/createorder");
+  };
+  // const summaryHandler = () => {
+  //   history.push("/summary");
+  // };
 
-  // useEffect(() => {
-  // axios.get("http://localhost:3002/pastorder", {
-  //     headers: { Authorization: `${token}` },
-  //     data:orderData
-  //   })
-  //   .then((res) => {
-  //     setorderData(res.data)
-  //     console.log(res.data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   })
-  // }, []);
-  useEffect(()=>{
-		if(localStorage.getItem('token')){
-   
-		}
-	})
-  fetch("http://localhost:3002/pastorder")
-  .then((data) => {
-    return data.json();
-
-  })
-  .then((orderData) => {
-  
-    setorderData(orderData);
-  });
-
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      history.push("/");
+    }
+    axios
+      .get("http://localhost:3002/pastorder", {
+        headers: { authorization: localStorage.getItem("token") },
+      })
+      .then((data) => {
+        setorderData(data.data.orders)
+        
+      });
+  }, []);
+  console.log(orderData[0])
 
 
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal className="modal" {...props}>
-        <Modal.Header>
+        <Modal.Header className="popupheader">
           <Modal.Title id="contained-modal-title-vcenter">
-            <h4>Alert</h4>
-            <CloseButton />
+            <h4>
+              Alert &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <CloseButton />{" "}
+            </h4>
+            {/* <CloseButton /> */}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure you want to cancel the order No:order1</p>
+          <p>Are you sure you want to cancel the order No:order 1</p>
+          <img className="alertimage" src="red-alert.jpg" alt="" />
         </Modal.Body>
         <Modal.Footer>
           <td onClick={props.onHide} animation={false}>
             {" "}
-            <button>Proceed</button>
+            <button className="buttonalign">Proceed</button>
           </td>
         </Modal.Footer>
       </Modal>
@@ -65,9 +68,35 @@ const [orderData,setorderData]=useState([])
       <div>
         <Header2></Header2>
         <Sidebar></Sidebar>
+        {/* {!order && (
+                  <p className="d-flex flex-column justify-content-center align-items-center">
+                    No orders available{" "}
+                    <button
+                      type="button"
+                      class="btn create"
+                      style={{
+                        border: "2px solid #5861AE",
+                        backgroundColor: "white",
+                        color: "#5861AE",
+                        padding: "5px 15px",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                      }}
+                      onClick={Routehandler}
+                    >
+                      Create
+                    </button>
+                  </p>
+                )} */}
         <span className="order">Orders | 0</span>
         <span className="box-create"></span>
-        <span className="create">Create</span>
+        <span
+          className="create"
+          onClick={createorderHandler}
+          style={{ cursor: "pointer" }}
+        >
+          Create
+        </span>
         <div>
           <span className="search"></span>
           <span className="Search-box">_______________</span>
@@ -89,32 +118,29 @@ const [orderData,setorderData]=useState([])
             </thead>
             <tbody>
               <tr>
-                {orderData.map((order, i) => {
-                  return (
-                    <>
-                      <td>{order[0}</td>
-                      <td>10 OCT 2021, 10:15</td>
-                      <td>Jp Nagar</td>
-                      <td>Bangalore</td>
-                      <td>+919988667755</td>
-                      <td>10</td>
-                      <td>430 Rs</td>
-                      <td>Ready to pickup</td>
-                      <td
-                        style={{ color: "red", cursor: "-moz-grab" }}
-                        variant="secondary"
-                        onClick={() => [setModalShow(true), setcancelorder("")]}
-                      >
-                        {cancelorder}
-                      </td>
-                      <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                      />
-                      <td>VisibilityIcon</td>
-                    </>
-                  );
-                })}
+
+                <td>order 1</td>
+                <td>10 OCT 2021, 10:15</td>
+                <td>Jp Nagar</td>
+                <td>Bangalore</td>
+                <td>+919988667755</td>
+                <td>10</td>
+                <td>430 Rs</td>
+                <td>Ready to pickup</td>
+                <td
+                  style={{ color: "red", cursor: "pointer" }}
+                  variant="secondary"
+                  onClick={() => [setModalShow(true), setcancelorder("")]}
+                >
+                  {cancelorder}
+                </td>
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+                <td>
+                  <img className="eye" src="eye.png" alt="" />
+                </td>
               </tr>
             </tbody>
           </table>

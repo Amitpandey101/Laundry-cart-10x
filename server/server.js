@@ -18,7 +18,7 @@ app.use(cors())
 
 // mongoose.connect(process.env.MONGO_URI)
 //Mondodb connecton setup and creating Database
-mongoose.connect('mongodb://localhost:27017')
+mongoose.connect('mongodb+srv://laundrycart:Laundry%40123@laundrycart.ip7w6.mongodb.net/?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true })
 .then(()=>{console.log('Connected to database !!')})
 .catch((error)=>{console.log(error)});
 
