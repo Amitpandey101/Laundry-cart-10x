@@ -18,6 +18,7 @@ const Header2 = () => {
 	  const logoutHandler = async () => {
 			localStorage.removeItem('token')
 			localStorage.removeItem('name')
+			localStorage.removeItem('email')
 			history.push('/')
 		  	return;
 	  };

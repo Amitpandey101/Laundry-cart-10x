@@ -26,3 +26,6 @@ align-items: center;
     background-color:white;
     width: inherit;
 }
+.my-3:hover{
+    cursor: pointer;
+}

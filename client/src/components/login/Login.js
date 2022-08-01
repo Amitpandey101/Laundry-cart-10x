@@ -22,6 +22,7 @@ const Login = () => {
 	const [id, setId] = useState('');
 	const [inValidEmail, setInvalidEmail] = useState(false);
 	const [inValidPhone, setInvalidPhone] = useState(false);
+	const [inValidPassword , setInvalidPassword] = useState(false);
 
 	const [values, setValues] = useState({
 		password: '',
@@ -42,6 +43,7 @@ const Login = () => {
 	};
 
 	const handlePasswordChange = (prop) => (event) => {
+		setInvalidPassword(false)
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
@@ -90,6 +92,8 @@ const Login = () => {
 				}else if(res.data.message.includes('Phone')){
 					// alert(res.data.message)
 					setInvalidPhone(true)
+				}else if(res.data.message.includes('password')){
+					setInvalidPassword(true)
 				}else{
 					alert(res.data.message)
 				}
@@ -168,7 +172,9 @@ const Login = () => {
 												value={values.password}
 												
 											/>
-											
+											{inValidPassword && <label className="new-label-warning" htmlFor="email">
+											<i className='margin-right-pass'>Incorrect Password</i>
+											</label>}
 											<label className="new-label" htmlFor="password">
 												Password
 											</label>

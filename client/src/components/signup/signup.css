@@ -202,3 +202,50 @@ margin: -1.5rem;
 	transition: transform, opacity, 0.1s ;
 	pointer-events: none;
 }
+
+.modal{
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+.modalHeader{
+    border: none;
+    background-color: #5861AE;
+    color: white;
+    outline: none;
+    border: none;
+}
+.confirm{
+    padding: 0.4rem 2rem;
+    background-color: #5861ae;
+	opacity: 1;
+    outline: none;
+}
+.confirm:hover{
+    background-color: #545ca8;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .3);
+  
+}
+.confirm:active{
+    background-color: #5860ae;
+}
+.cancel{
+    padding: 0.4rem 2rem;
+    background-color: #525252;
+	opacity: 1;
+    outline: none;
+}
+.cancel:hover{
+    background-color: #4b4b4b;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .3);
+}
+.alert-img{
+ width: 80px;
+ background: none;
+ margin-right: 2rem;
+}
+.modal-body{
+    font-size: large;
+    font-weight: 400;
+}

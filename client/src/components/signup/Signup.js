@@ -4,8 +4,9 @@ import './signup.css';
 import Footer from '../Footer/Footer';
 import { State, City } from 'country-state-city';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const allStates = State.getStatesOfCountry('IN');
 const stateNames = allStates.map((data) => {
@@ -13,7 +14,7 @@ const stateNames = allStates.map((data) => {
 });
 
 const Signup = () => {
-	const history = useHistory();
+	
 	const [selectedState, setselectedState] = useState('');
 	const [selectedCity, setSelectedCity] = useState('');
 	const [allCities, setAllCities] = useState();
@@ -21,12 +22,17 @@ const Signup = () => {
 	const [inValidPhone, setInvalidPhone] = useState(false);
 	const [inValidState, setInvalidState] = useState(false);
 	const [inValidcity, setInvalidcity] = useState(false);
+	const [errorMessage , setErrorMessage] = useState('')
 
 	const [userName, setuserName] = useState('');
 	const [userEmail, setuserEmail] = useState('');
 	const [userPhone, setuserPhone] = useState('');
 	const [userAddress, setuserAddress] = useState('');
 	const [areaCode, setareaCode] = useState('');
+
+	const [show, setShow] = useState(false);
+	  const handleClose = () => setShow(false);
+	  const handleShow = () => setShow(true);
 
 	const [ticked, setTick] = useState(true);
 	const [values, setValues] = useState({
@@ -110,6 +116,7 @@ const Signup = () => {
 		) {
 			email = userEmail;
 		} else {
+			setErrorMessage('Please enter a valid Email id')
 			setInvalidEmail(true);
 			return;
 		}
@@ -118,6 +125,7 @@ const Signup = () => {
 		if (userPhone.trim().length === 10 && userPhone.trim().charCodeAt(0) > 54 && userPhone.trim().charCodeAt(0) < 58){
 			phone = userPhone;
 		} else {
+			setErrorMessage('Please enter a valid Phone Number')
 			setInvalidPhone(true);
 			return;
 		}
@@ -147,15 +155,17 @@ const Signup = () => {
 		axios.post('http://localhost:3001/register',formData)
 		.then((res) => {
 			if(res.data.message){
-				console.log('successful')
-				alert(res.data.message)
-				history.push('/');
+				
+				
+			handleShow();
 			}else{
 				if(res.data.error.includes('Email')){
-					alert(res.data.error)
+					setErrorMessage(res.data.error)
+					setInvalidEmail(true)
 					return;
-				}else if(res.data.error.includes('phone')){
-					alert(res.data.error)
+				}else if(res.data.error.includes('Phone')){
+					setErrorMessage(res.data.error)
+					setInvalidPhone(true)
 					return;
 				}
 			}
@@ -223,7 +233,7 @@ const Signup = () => {
 												required
 											/>
 											{inValidEmail && <label className="new-label-warning-reg" htmlFor="email">
-											<i>Please enter a valid Email id</i>
+											<i>{errorMessage}</i>
 											</label>}
 											<label className="new-label" htmlFor="email">
 												Email
@@ -279,7 +289,7 @@ const Signup = () => {
 												required
 											/>
 											{inValidPhone && <label className="new-label-warning-reg" htmlFor="email">
-											<i>Please enter a valid Phone Number</i>
+											<i>{errorMessage}</i>
 											</label>}
 											<label className="new-label" htmlFor="phone">
 											Phone (+91)
@@ -406,6 +416,28 @@ const Signup = () => {
 			</section>
 			<hr className="h-line"></hr>
 			<Footer></Footer>
+			<Modal
+	    
+		size="md"
+		aria-labelledby="contained-modal-title-vcenter"
+		centered
+	   show={show}
+	   onHide={handleClose}
+	   backdrop="static"
+	   keyboard={false}
+	   className='modal'
+	 >
+	   <Modal.Header className='modalHeader'>
+		 <Modal.Title >Success</Modal.Title>
+	   </Modal.Header>
+	   <Modal.Body className='text-capitalize modal-body'>
+		   <img className='alert-img' src="./right-tick.jpg" alt="" />
+		{'Successfully Registered User !!'}
+	   </Modal.Body>
+	   <Modal.Footer>
+		 <Link to='/'><Button className='confirm' variant="primary">Proceed</Button></Link>
+	   </Modal.Footer>
+	 </Modal>
 		</>
 	);
 };

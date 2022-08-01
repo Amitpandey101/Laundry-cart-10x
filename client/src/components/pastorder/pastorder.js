@@ -1,7 +1,7 @@
 import React from 'react';
 import Header2 from '../header-2/header2';
 import Sidebar from '../sidebar/sidebar';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Pastorder = () => {
@@ -11,7 +11,7 @@ const Pastorder = () => {
 			history.push('/');
 		}
 	}, []);
-	const [order, setorder] = useState('');
+	
 
 
 	return (
@@ -25,9 +25,7 @@ const Pastorder = () => {
 					<div className="col-lg-11">
 						{/* Remaining Sections  */}
 						<div className="container-fluid my-5">
-							{!order && (
-								<p className="d-flex justify-content-center"> create </p>
-							)}
+							
 		
 						</div>
 					</div>
