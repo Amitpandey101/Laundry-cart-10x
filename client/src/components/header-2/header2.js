@@ -1,13 +1,29 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './header2.css';
 import { useHistory } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useEffect } from 'react';
 
 const Header2 = () => {
     const history = useHistory()
-    const logoutHandler = ()=>{
-        alert("Are you sure Want to Logout")
-        history.push('/')
-    }
+	const [show, setShow] = useState(false);
+	  const handleClose = () => setShow(false);
+	  const handleShow = () => setShow(true);
+	  const [userName , setUserName] = useState('')
+	useEffect(()=>{
+		setUserName(localStorage.getItem('name'))
+	},[])
+	
+	  const logoutHandler = async () => {
+			localStorage.removeItem('token')
+			localStorage.removeItem('name')
+			history.push('/')
+		  	return;
+	  };
+
+  
+    
 
 	return (
 		<>
@@ -26,20 +42,51 @@ const Header2 = () => {
 							<span className="nav-link">career</span>
 						</li>
 
-						<li className="nav-item user" onClick={logoutHandler}>
+						<li className="nav-item user"  onClick={handleShow}>
 							<span to="/" className="nav-link cust-link-acc">
 								<span className="user-acc">
                                     <img className='acc-img' src="./acc.png" alt="" />
 								</span>
                                 <div className='user-name'>
-                                <span >Hi! {'User Name'}</span>
+                                <span >Hi! {userName}</span>
                                 </div>
 								
+
+
 							</span>
 						</li>
 					</ul>
 				</div>
 			</nav>
+			
+
+      <Modal
+	    
+		 size="md"
+		 aria-labelledby="contained-modal-title-vcenter"
+		 centered
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+		className='modal'
+      >
+        <Modal.Header className='modalHeader' closeButton>
+          <Modal.Title >Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='text-capitalize modal-body'>
+			<img className='alert-img' src="./red-alert.jpg" alt="" />
+         Are you sure want to logout ?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className='cancel' variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button className='confirm' onClick={logoutHandler} variant="primary">Confirm</Button>
+        </Modal.Footer>
+      </Modal>
+
+
 		</>
 	);
 };

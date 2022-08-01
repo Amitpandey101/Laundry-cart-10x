@@ -7,11 +7,11 @@ const UniqueInputAuth = (req,res,next)=>{
     .then((data)=>{
         // console.log(data)
         if(data.length !== 0 ){
-           return res.status(401).json({error:'Email has Already registered'})
+           return res.json({error:'Email has Already registered'})
         }else{
             UserData.find({phone:req.body.phone}).then((data)=>{
                 if(data.length !== 0){
-                   return res.status(401).json({error:'phone no. already registered'})
+                   return res.json({error:'phone no. already registered'})
                 }else{
                     next();
                 }

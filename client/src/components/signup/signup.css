@@ -189,3 +189,16 @@ margin: -1.5rem;
 .lock:hover{
 	cursor: pointer;
 }
+.col-war{
+	color: red;
+}
+
+.new-label-warning-reg{
+	display: block;
+	position: absolute;
+	font-size: .8rem;
+	color: #f10000;
+	transform: translate(12rem, -2rem) ;
+	transition: transform, opacity, 0.1s ;
+	pointer-events: none;
+}
