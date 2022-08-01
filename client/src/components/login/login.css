@@ -112,7 +112,8 @@
 .f-pass {
 	font-weight: 500;
 	font-size: 14px;
-	margin-left: 21rem;
+	width: 70%;
+	text-align: right;
 	letter-spacing: 0.64px;
 	color: #4552c1;
 	text-transform: capitalize;

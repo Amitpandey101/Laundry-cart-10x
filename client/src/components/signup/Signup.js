@@ -45,10 +45,12 @@ const Signup = () => {
 		setuserName(name)
 	}
 	const emailChangeHandler = (email) => {
+		
 		setInvalidEmail(false)
 		setuserEmail(email)
 	}
 	const phoneChangeHandler = (phone) => {
+		setInvalidEmail(false)
 		setInvalidPhone(false)
 		setuserPhone(phone)
 	}
@@ -117,6 +119,7 @@ const Signup = () => {
 			email = userEmail;
 		} else {
 			setErrorMessage('Please enter a valid Email id')
+			setInvalidPhone(false)
 			setInvalidEmail(true);
 			return;
 		}
@@ -126,6 +129,7 @@ const Signup = () => {
 			phone = userPhone;
 		} else {
 			setErrorMessage('Please enter a valid Phone Number')
+			setInvalidEmail(false)
 			setInvalidPhone(true);
 			return;
 		}

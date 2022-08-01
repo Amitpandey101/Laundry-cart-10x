@@ -116,7 +116,7 @@ const Login = () => {
 			<Header></Header>
 			<section>
 				<div className="row main-b">
-					<div className="col-lg-6 part-1">
+					<div className="col-lg-6 col-md-6 col-sm-6 part-1">
 						<div className="part1-child">
 							<h2 className="head-2">Laundry</h2>
 							<h2 className="head-2">Service</h2>
@@ -129,14 +129,14 @@ const Login = () => {
 						</div>
 						<div className="line"></div>
 					</div>
-					<div className="col-lg-6 part-2">
+					<div className="col-lg-6 col-md-6 col-sm-6 part-2">
 						<div className="container c2-box">
 							<form onSubmit={formSubmitHandle}>
 								<div>
 									<h3 className="head-3">SIGN IN</h3>
 
 									<div className="row part-2-box">
-										<div className="col-lg-12">
+										<div className="col-lg-12  col-md-10 col-sm-8 ">
 											<div className="input-wrapper"></div>
 											<input
 												type="text"
@@ -158,7 +158,7 @@ const Login = () => {
 												Email/Phone
 											</label>
 										</div>
-										<div className="col-lg-12">
+										<div className="col-lg-12  col-md-10 col-sm-8 ">
 											<div className="input-wrapper"></div>
 											<input
 												type={values.showPassword ? 'text' : 'password'}
@@ -196,9 +196,9 @@ const Login = () => {
 												)}
 											</span>
 										</div>
-										<div className='f-pass'>
-											<p>Forget Password?</p>
-										</div>
+										
+											<span className='f-pass'>Forget Password?</span>
+										
 									</div>
 								</div>
 								
