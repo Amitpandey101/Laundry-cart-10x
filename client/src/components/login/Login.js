@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 
 
 const Login = () => {
+
+	
 	const history = useHistory()
 	useEffect(()=>{
 		if(localStorage.getItem('token')){
@@ -92,7 +94,9 @@ const Login = () => {
 					alert(res.data.message)
 				}
 			}else{
+			localStorage.setItem('name',res.data.name)
 			localStorage.setItem('token',res.data.token)
+			localStorage.setItem('email',res.data.email)
 			history.push('/pastorder')
 			}
 			
@@ -141,10 +145,10 @@ const Login = () => {
 												required
 											/>
                                             {inValidEmail && <label className="new-label-warning" htmlFor="email">
-											<i>Please enter a valid Email</i>
+											<i className='margin-bit'>Please enter a valid Email</i>
 											</label>}
 											{inValidPhone && <label className="new-label-warning" htmlFor="email">
-											<i>Please enter a valid Phone number</i>
+											<i className='margin-right'>Please enter a valid Phone number</i>
 											</label>}
 											<label className="new-label" htmlFor="email">
 												Email/Phone
@@ -186,10 +190,14 @@ const Login = () => {
 												)}
 											</span>
 										</div>
+										<div className='f-pass'>
+											<p>Forget Password?</p>
+										</div>
 									</div>
 								</div>
-								<div></div>
+								
 								<div className="container checkbox-div">
+									<div></div>
 									<div className="mx-auto">
 										<button type="submit" className="reg-bt-2">
 											SIGN IN
@@ -198,7 +206,7 @@ const Login = () => {
 								</div>
 							</form>
 						</div>
-
+						
 					</div>
 				</div>
 			</section>

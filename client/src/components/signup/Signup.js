@@ -146,8 +146,22 @@ const Signup = () => {
 		console.log(formData)
 		axios.post('http://localhost:3001/register',formData)
 		.then((res) => {
-			console.log(res.response.data)
-			history.push('/')
+			if(res.data.message){
+				console.log('successful')
+				alert(res.data.message)
+				history.push('/');
+			}else{
+				if(res.data.error.includes('Email')){
+					alert(res.data.error)
+					return;
+				}else if(res.data.error.includes('phone')){
+					alert(res.data.error)
+					return;
+				}
+			}
+			
+			
+			
 		})
 		.catch((err)=>{console.log(err)})
 
@@ -223,13 +237,13 @@ const Signup = () => {
 												autoComplete="off"
 												required
 												id="password"
-												placeholder="Password"
+												placeholder="SetPassword"
 												className="cust-input"
 												onChange={handlePasswordChange('password')}
 												value={values.password}
 											/>
 											<label className="new-label" htmlFor="password">
-												Password
+												SetPassword
 											</label>
 											<span
 												className="lock"

@@ -36,7 +36,7 @@ const loginAuth = async (req,res,next)=>{
                 .then((passwordMatch)=>{
                     if(passwordMatch){
                       const token =  jwt.sign({email:data[0].email},process.env.SECRET_KEY);
-                            res.status(200).json({token,message:"Successfully Logged In with email as ID"});
+                            res.json({token,message:"Successfully Logged In with email as ID",name:data[0].name,email:data[0].email});
                     }else{
                         return res.json({message:'Incorrect password !'})
                     }
