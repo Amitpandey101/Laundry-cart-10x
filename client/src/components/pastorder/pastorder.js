@@ -35,9 +35,18 @@ const Pastorder = () => {
         
       });
   }, []);
-  console.log(orderData[0])
-
-
+  console.log(orderData)
+  // totalPrice:
+  const viewChangeHandler=(tar)=>{
+    axios
+      .delete("http://localhost:3002/deleteorder", {
+        data:{data:tar} , headers: { authorization: localStorage.getItem("token") },
+      }).then((res)=>{
+      
+       setorderData(res.data.remorders)
+      })
+  console.log(tar)
+  }
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal className="modal" {...props}>
@@ -97,7 +106,7 @@ const Pastorder = () => {
         >
           Create
         </span>
-        <div>
+        <div className="table-main">
           <span className="search"></span>
           <span className="Search-box">_______________</span>
 
@@ -117,20 +126,21 @@ const Pastorder = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-
-                <td>order 1</td>
-                <td>10 OCT 2021, 10:15</td>
+            
+              {orderData.map((order) => 
+                <tr>
+                <td>{order._id}</td>
+                <td>{order.date}</td>
                 <td>Jp Nagar</td>
                 <td>Bangalore</td>
                 <td>+919988667755</td>
-                <td>10</td>
-                <td>430 Rs</td>
+                <td>{order.totalItems}</td>
+                <td>{order.totalPrice}</td>
                 <td>Ready to pickup</td>
                 <td
                   style={{ color: "red", cursor: "pointer" }}
                   variant="secondary"
-                  onClick={() => [setModalShow(true), setcancelorder("")]}
+                  onClick={() => viewChangeHandler(order._id)}
                 >
                   {cancelorder}
                 </td>
@@ -141,7 +151,11 @@ const Pastorder = () => {
                 <td>
                   <img className="eye" src="eye.png" alt="" />
                 </td>
-              </tr>
+                </tr>
+               
+)}
+                
+              
             </tbody>
           </table>
         </div>

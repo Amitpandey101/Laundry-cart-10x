@@ -4,7 +4,7 @@ const OrderData=require("../models/order")
 
 
 const pastorder = async (req,res)=>{
-  console.log(req.headers.authorization)
+  // console.log(req.headers.authorization)
 if(req.headers.authorization){
   
         try {

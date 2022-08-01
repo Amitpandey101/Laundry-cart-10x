@@ -124,3 +124,7 @@
   cursor:"pointer";
   background-color: white;
 }
+.table-main{
+z-index: -1;
+/* min-height: 400px; */
+}
