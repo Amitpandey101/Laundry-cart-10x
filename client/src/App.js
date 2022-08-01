@@ -3,8 +3,9 @@ import Login from './components/login/Login';
 import './App.css';
 import { Switch , Route } from 'react-router-dom';
 import Copyright from './components/copyright/copyright';
-import Header2 from './components/header-2/header2';
+// import Header2 from './components/header-2/header2';
 import Pastorder from './components/pastorder/pastorder';
+
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <>
      
       <Switch>
+        {/* <Cancelpopup/> */}
         <Route path='/pastorder'>
         <Pastorder></Pastorder>
         </Route>

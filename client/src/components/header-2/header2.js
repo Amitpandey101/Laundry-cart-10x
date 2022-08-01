@@ -5,10 +5,9 @@ import { useHistory } from 'react-router-dom';
 const Header2 = () => {
     const history = useHistory()
     const logoutHandler = ()=>{
-		alert("Are you sure Want to Logout")
-		
+        alert("Are you sure Want to Logout")
         history.push('/')
-		
+
     }
 
 	return (
