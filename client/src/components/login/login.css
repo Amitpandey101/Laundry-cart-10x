@@ -112,7 +112,7 @@
 .f-pass {
 	font-weight: 500;
 	font-size: 14px;
-	margin-left: 23rem;
+	margin-left: 21rem;
 	letter-spacing: 0.64px;
 	color: #4552c1;
 	text-transform: capitalize;
@@ -120,10 +120,9 @@
 }
 .f-pass:hover {
 	cursor: pointer;
+	opacity: .9;
 }
-.f-pass:active {
-	text-decoration: underline;
-}
+
 
 .register-btn {
 	margin-top: 2rem;
@@ -209,4 +208,10 @@ margin: -1.5rem;
 	transform: translate(19.4rem, -2rem) ;
 	transition: transform, opacity, 0.1s ;
 	pointer-events: none;
+}
+.margin-right{
+	margin-left: -4.3rem;
+}
+.margin-bit{
+	margin-left: -1.1rem;
 }

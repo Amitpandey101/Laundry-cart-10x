@@ -1,3 +1,4 @@
+
 .table {
   position: absolute;
   top: 160px;
@@ -88,3 +89,18 @@
     height:20px;
     background-color: #5861ae;
 }
+
+.box{
+    min-height: 80vh;
+}
+.canvas-body{
+    width: 800px;
+    margin-right: 5rem;
+}
+.position{
+    margin-right: 0;
+}
+.Offcanvas{
+    width: 800px;
+}
+

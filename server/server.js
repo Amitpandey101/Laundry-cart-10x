@@ -1,15 +1,17 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 const mongoose = require('mongoose');
 const router = require('./routes/routes');
 const crypto = require('crypto');
 
+const cors = require('cors')
+
 const multer = require('multer');
 const upload = multer();
 const secretKey = crypto.randomBytes(64).toString('hex');
-const cors = require('cors')
+
 
  
 app.use(cors())
@@ -27,7 +29,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
-
+app.use(cors());
 
 
 //Middlewares --- Routers

@@ -23,9 +23,21 @@ const [orderData,setorderData]=useState([])
   //   })
   // }, []);
   useEffect(()=>{
+		if(localStorage.getItem('token')){
+   
+		}
+	})
+  fetch("http://localhost:3002/pastorder")
+  .then((data) => {
+    return data.json();
+
+  })
+  .then((orderData) => {
+  
+    setorderData(orderData);
+  });
 
 
-  },[])
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -80,7 +92,7 @@ const [orderData,setorderData]=useState([])
                 {orderData.map((order, i) => {
                   return (
                     <>
-                      <td>order1</td>
+                      <td>{order[0}</td>
                       <td>10 OCT 2021, 10:15</td>
                       <td>Jp Nagar</td>
                       <td>Bangalore</td>
