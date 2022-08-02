@@ -32,6 +32,9 @@ const Pastorder = () => {
 		setsummaryp(!summaryp);
 	};
 
+  // const heightdocument = window.screen.height
+  // console.log(heightdocument)
+
 	const history = useHistory();
 	const [orderData, setorderData] = useState([]);
 	useEffect(() => {
@@ -165,9 +168,9 @@ const Pastorder = () => {
 
 
         <IconContext.Provider value={{ color: "#fff" }}>
-                  <nav className={summaryp ? "nav-menu active" : "nav-menu"}>
-                    <ul className="nav-menu-items">
-                      <li className="navbar-toggle">
+                  <nav className={summaryp ? "nav-menu-pastorders active" : "nav-menu-pastorders"} >
+                    <ul className="nav-menu-items-pastorders">
+                      <li className="navbar-toggle-pastorders">
                         <p>Summary</p>
                         <Link
                           to="#"
@@ -198,15 +201,15 @@ const Pastorder = () => {
                       <div className="table-summary-pastorders">
                 Order Details
             <div>
-            {summarydata.map((item, key) => {
+            {summarydata && summarydata.map((item, key) => {
                 return item.quantity > 0 ? (
                   <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col" ></th>
-                        <th scope="col" ></th>
-                        <th scope="col" ></th>
-                        <th scope="col"></th>
+                      <th scope="col" style={{ width: "35%" }}></th>
+                            <th scope="col" style={{ width: "45%" }}></th>
+                            <th scope="col" style={{ width: "7%" }}></th>
+                            <th scope="col" style={{ width: "10%" }}></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -264,8 +267,8 @@ const Pastorder = () => {
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
                     style={{
-                      border: "1px solid #5861AE",
-                      backgroundColor: "#5861AE",
+                      border: "1px solid #F41313",
+                      backgroundColor: "#F41313",
                       color: "#fff",
                       padding: "2px 20px",
                       fontSize: "16px",
@@ -280,7 +283,7 @@ const Pastorder = () => {
                      
                     // }}
                   >
-                    Confirm
+                    cancel order
                   </button></div>
             </ul>
           </nav>
