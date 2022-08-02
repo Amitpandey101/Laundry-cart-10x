@@ -63,16 +63,13 @@ const Header2 = () => {
 			
 
       <Modal
-	    
-		 size="md"
-		 
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-		className='modal'
+		className='modal-f'
       >
-        <Modal.Header className='modalHeader' closeButton>
+        <Modal.Header className='modalnewHeader' closeButton>
           <Modal.Title >Alert</Modal.Title>
         </Modal.Header>
         <Modal.Body className='text-capitalize modal-body'>
