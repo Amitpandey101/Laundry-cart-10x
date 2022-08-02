@@ -71,6 +71,8 @@ border-left: 2px solid #E3E3E3;
     border: none;
     border-radius: 0;
     padding: 0;
+    position: fixed; 
+    top: 0; 
 }
 
 .modalnewHeader{
@@ -105,12 +107,12 @@ border-left: 2px solid #E3E3E3;
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .3);
 }
 .alert-img{
- width: 80px;
+ width: 50px;
  background: none;
  margin-right: 2rem;
 }
-.modal-body{
+.modal-body-main{
     font-size: large;
     font-weight: 400;
-    height: 150px;
+   
 }

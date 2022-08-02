@@ -43,7 +43,7 @@ const Pastorder = () => {
 
   function MyVerticallyCenteredModal(props) {
     return (
-      <Modal className="modal" {...props}>
+      <Modal className="modal-past" {...props}>
         <Modal.Header className="popupheader">
           <Modal.Title id="contained-modal-title-vcenter">
             <h4>

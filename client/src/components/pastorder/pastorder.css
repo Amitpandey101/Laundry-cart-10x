@@ -71,7 +71,7 @@
 
   opacity: 1;
 }
-.modal{
+.modal-past{
     position: absolute;
   display: flex;
   justify-content: center;

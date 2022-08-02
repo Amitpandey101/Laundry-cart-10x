@@ -65,14 +65,14 @@ const Header2 = () => {
       <Modal
         show={show}
         onHide={handleClose}
-        backdrop="static"
+        backdrop="false"
         keyboard={false}
-		className='modal-f'
+		className='modal'
       >
         <Modal.Header className='modalnewHeader' closeButton>
           <Modal.Title >Alert</Modal.Title>
         </Modal.Header>
-        <Modal.Body className='text-capitalize modal-body'>
+        <Modal.Body className='text-capitalize modal-body-main'>
 			<img className='alert-img' src="./red-alert.jpg" alt="" />
          Are you sure want to logout ?
         </Modal.Body>

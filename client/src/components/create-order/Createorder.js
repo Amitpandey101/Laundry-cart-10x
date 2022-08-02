@@ -591,7 +591,7 @@ const Createorder = () => {
   //database connection and object
   const onconfirmhandler = () =>{
     const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90}
-    axios.post('http://localhost:3001/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
+    axios.post('http://localhost:3002/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
     .then((res) => {
       console.log(res.data)
       if(res.data.message.includes('successfully')){
@@ -1899,14 +1899,29 @@ const Createorder = () => {
      onHide={handleClosemodal}
         backdrop="static"
         keyboard={false}
-		className='modal'
+		className='modal-create-order'
       >
    
-        <Modal.Body className='text-capitalize create-order-modal-body'>
-			<img className='tick-img' src="./tickicon.svg" alt="" />
-      <Modal.Title >you order is placed successfully!!!</Modal.Title>
-         you can track your order in the "orders" section
-         <Button className='go-to-order' onClick={cancelorderHandler} variant="primary">Go to orders</Button>
+        <Modal.Body className='text-capitalize create-order-modal-body p-5'>
+
+			
+      <div className="modal-create-order-box">
+      <img className='tick-img' src="./tickicon.svg" alt="" />
+      <div className="create-mod-head">
+      <h3>you order is placed </h3>
+        <h3>successfully!!!</h3>
+      </div>
+      <div className="create-mod-content">
+      <span> you can track your order in the </span>
+        <span> "orders" section</span>
+      </div>
+       
+        
+        <Button className='go-to-order' onClick={cancelorderHandler} variant="primary">Go to orders</Button>
+      </div>
+      
+       
+         
         </Modal.Body>
       </Modal>
       

@@ -424,7 +424,6 @@ const Signup = () => {
 	    
 		size="md"
 		aria-labelledby="contained-modal-title-vcenter"
-		centered
 	   show={show}
 	   onHide={handleClose}
 	   backdrop="static"
