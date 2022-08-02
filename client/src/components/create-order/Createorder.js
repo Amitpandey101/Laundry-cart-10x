@@ -583,8 +583,8 @@ const Createorder = () => {
 
   //database connection and object
   const onconfirmhandler = () =>{
-    const newOrder={ email:userEmail, order:orderData , Subtotal:sub , Total:sub+90}
-    axios.post('http://localhost:3001/createorder',{data:{data:newOrder},headers: { authorization: localStorage.getItem("token") }})
+    const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90}
+    axios.post('http://localhost:3001/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
     .then((res) => {
       console.log(res.data)
       if(res.data.message.includes('successfully')){
