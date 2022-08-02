@@ -1,6 +1,8 @@
-.main-b {
-	min-height: 590px;
-}
+.min-h{
+	position: relative;
+	min-height: 100vh;
+  }
+
 .part-1 {
 	display: flex;
 	justify-content: center;

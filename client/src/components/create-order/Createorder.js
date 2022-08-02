@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { IconContext } from "react-icons";
 import axios from "axios";
+import Copyright from "../copyright/copyright";
 
 const address = {
   JPNagar: "Near Phone booth, 10th road,",
@@ -614,27 +615,27 @@ const Createorder = () => {
   return (
     <>
       <div
-      className="page-document"
+      className="page-document "
         style={{
           opacity,
-          backgroundColor: isActive ? "grey" : "",
-          color: isActive ? "grey" : "",
-          position: isActive ? "fixed" : ""
+          // backgroundColor: isActive ? "white" : "",
+          // color: isActive ? "white" : "",
+          // position: isActive ? "fixed" : ""
           // display: isActive ? "none" : ""
         }}
       >
         <Header2></Header2>
-        <div className="box">
-          <div className="row">
+        <div className="box min-h">
+          <div className="row ">
             <div className="col-lg-1 col-md-1 p-0">
               <Sidebar></Sidebar>
             </div>
 
             <div className="col-lg-11">
               {/* Remaining Sections  */}
-              <div className="">
-               
-                <table class="table" style={{ border: "1px solid #E0E0E0" }}>
+              <div className="container">
+                <p>Create order </p>
+                <table class="table product-table" style={{ border: "1px solid #E0E0E0" }}>
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col" style={{ width: "35%" }}>
@@ -1751,6 +1752,7 @@ const Createorder = () => {
           </div>
         </div>
       </div>
+      
       <div>
         <IconContext.Provider value={{ color: "#fff" }}>
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -1877,7 +1879,9 @@ const Createorder = () => {
           </nav>
         </IconContext.Provider>
       </div>
+      
     </>
+    
   );
 };
 

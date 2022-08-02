@@ -76,7 +76,7 @@ const Pastorder = () => {
                     No orders available{" "}
                     <button
                       type="button"
-                      class="btn create"
+                      className="btn create"
                       style={{
                         border: "2px solid #5861AE",
                         backgroundColor: "white",
@@ -104,8 +104,8 @@ const Pastorder = () => {
           <span className="search"></span>
           <span className="Search-box">_______________</span>
 
-          <table class="table">
-            <thead class="thead-dark">
+          <table className="table table-past-order">
+            <thead className="thead-dark">
               <tr>
                 <th scope="col">Order id</th>
                 <th scope="col">Order Date & Time</th>

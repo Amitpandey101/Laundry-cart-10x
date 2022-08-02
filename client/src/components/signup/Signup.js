@@ -187,7 +187,7 @@ const Signup = () => {
 		<>
 			<Header></Header>
 			<section>
-				<div className="row main-b">
+				<div className="row min-h">
 					<div className="col-lg-3 part-1">
 						<div className="part1-child">
 							<h2 className="head-2">Laundry</h2>
