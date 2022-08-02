@@ -1,14 +1,7 @@
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.min-h{
+  position: relative;
+  min-height: 100vh;
 }
-*{
-    -ms-overflow-style: none;
-  }
-  ::-webkit-scrollbar {
-    display: none;
-  }
 
 .product-name{
     color: black;

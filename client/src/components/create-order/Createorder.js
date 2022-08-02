@@ -581,7 +581,7 @@ const Createorder = () => {
 	return (
 		<>
 			<Header2></Header2>
-			<div className="box">
+			<div className="box min-h">
 				<div className="row main-b">
 					<div className="col-lg-1 col-md-1 p-0">
 						<Sidebar></Sidebar>
