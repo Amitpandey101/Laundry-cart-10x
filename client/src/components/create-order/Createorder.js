@@ -15,9 +15,9 @@ const address = {
 };
 
 const Createorder = () => {
-	const [store, setstore] = useState(false);
+  const [store, setstore] = useState(false);
 
-	const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(true);
 
   const [show, setShow] = useState(false);
   const [price, setPrice] = useState(0);
@@ -55,7 +55,158 @@ const Createorder = () => {
   const [colorttr, setcolorttr] = useState(true);
   const [colorbtr, setcolorbtr] = useState(true);
 
+  const handleChange = (event) => {
+    if (parseInt(event.target.value) > 0) {
+      setShow(true);
+      setPrice(event.target.value);
+    } else {
+      setShow(false);
+      setPrice();
+    }
+  };
+  const handleUserInput = (event) => {
+    setInputValue(event.target.value);
+  };
+  const costvaluew = () => {
+    if (colorw === true) {
+      setw(10);
+    } else {
+      setw(0);
+    }
+  };
+  const costvaluei = () => {
+    if (colori === true) {
+      seti(10);
+    } else {
+      seti(0);
+    }
+  };
+  const costvaluet = () => {
+    if (colort === true) {
+      sett(15);
+    } else {
+      sett(0);
+    }
+  };
+  const costvalueb = () => {
+    if (colorb === true) {
+      setb(20);
+    } else {
+      setb(0);
+    }
+  };
 
+  // Reset Input Field handler
+  const resetInputField = () => {
+    setInputValue("");
+    setShow(false);
+    setPrice(0);
+    setcolorw(true);
+    setcolori(true);
+    setcolort(true);
+    setcolorb(true);
+    setw(0);
+    seti(0);
+    sett(0);
+    setb(0);
+  };
+
+  const handleChanget = (event) => {
+    if (parseInt(event.target.value) > 0) {
+      setShowt(true);
+      setPricet(event.target.value);
+    } else {
+      setShowt(false);
+      setPricet();
+    }
+  };
+  const handleUserInputt = (event) => {
+    setInputValuet(event.target.value);
+  };
+  const costvaluewt = () => {
+    if (colorwt === true) {
+      setwt(10);
+    } else {
+      setwt(0);
+    }
+  };
+  const costvalueit = () => {
+    if (colorit === true) {
+      setit(10);
+    } else {
+      setit(0);
+    }
+  };
+  const costvaluett = () => {
+    if (colortt === true) {
+      settt(15);
+    } else {
+      settt(0);
+    }
+  };
+  const costvaluebt = () => {
+    if (colorbt === true) {
+      setbt(20);
+    } else {
+      setbt(0);
+    }
+  };
+
+  // Reset Input Field handler
+  const resetInputFieldt = () => {
+    setInputValuet("");
+    setShowt(false);
+    setPricet(0);
+    setcolorwt(true);
+    setcolorit(true);
+    setcolortt(true);
+    setcolorbt(true);
+    setwt(0);
+    setit(0);
+    settt(0);
+    setbt(0);
+  };
+
+  const handleChangetr = (event) => {
+    if (parseInt(event.target.value) > 0) {
+      setShowtr(true);
+      setPricetr(event.target.value);
+    } else {
+      setShowtr(false);
+      setPricetr();
+    }
+  };
+  const handleUserInputtr = (event) => {
+    setInputValuetr(event.target.value);
+  };
+  const costvaluewtr = () => {
+    if (colorwtr === true) {
+      setwtr(15);
+    } else {
+      setwtr(0);
+    }
+  };
+  const costvalueitr = () => {
+    if (coloritr === true) {
+      setitr(15);
+    } else {
+      setitr(0);
+    }
+  };
+  const costvaluettr = () => {
+    if (colorttr === true) {
+      setttr(20);
+    } else {
+      setttr(0);
+    }
+  };
+  const costvaluebtr = () => {
+    if (colorbtr === true) {
+      setbtr(25);
+    } else {
+      setbtr(0);
+    }
+  };
 
   // Reset Input Field handler
   const resetInputFieldtr = () => {
@@ -481,8 +632,8 @@ const Createorder = () => {
 
             <div className="col-lg-11">
               {/* Remaining Sections  */}
-              <div className="container">
-                <p>Create order </p>
+              <div className="">
+               
                 <table class="table" style={{ border: "1px solid #E0E0E0" }}>
                   <thead class="thead-dark">
                     <tr>

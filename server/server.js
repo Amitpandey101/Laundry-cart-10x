@@ -18,14 +18,10 @@ app.use(cors())
 
 // mongoose.connect(process.env.MONGO_URI)
 //Mondodb connecton setup and creating Database
-<<<<<<< HEAD
 
 const Database = process.env.MONGO_URI
 mongoose.connect(Database)
 
-=======
-mongoose.connect(process.env.MONGO_URI)
->>>>>>> origin/person2
 .then(()=>{console.log('Connected to database !!')})
 .catch((error)=>{console.log(error)});
 
