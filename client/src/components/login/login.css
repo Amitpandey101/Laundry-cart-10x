@@ -1,5 +1,5 @@
 .main-b {
-	height: 650px;
+	min-height: 590px;
 }
 .part-1 {
 	display: flex;

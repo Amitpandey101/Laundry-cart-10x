@@ -1,19 +1,29 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 const mongoose = require('mongoose');
 const router = require('./routes/routes');
 const crypto = require('crypto');
+
 const cors = require('cors')
+
 const multer = require('multer');
 const upload = multer();
 const secretKey = crypto.randomBytes(64).toString('hex');
 
+
+ 
+app.use(cors())
+
 // mongoose.connect(process.env.MONGO_URI)
 //Mondodb connecton setup and creating Database
+<<<<<<< HEAD
 const Database = process.env.MONGO_URI
 mongoose.connect(Database)
+=======
+mongoose.connect('mongodb+srv://laundrycart:Laundry%40123@laundrycart.ip7w6.mongodb.net/?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true })
+>>>>>>> origin/person1
 .then(()=>{console.log('Connected to database !!')})
 .catch((error)=>{console.log(error)});
 
@@ -33,4 +43,4 @@ app.use(router)
 //Server Connection Setup
 app.listen(port , ()=>{
     console.log('SERVER CONNECTED !!')
-})
+}) 

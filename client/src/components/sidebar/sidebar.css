@@ -1,5 +1,17 @@
+
+
+.sidebar {
+  position: fixed;
+ 
+  left: 0px;
+  width: 57px;
+  min-height: 933px;
+  background: #5861ae 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
 .box{
     min-height: 80vh;
+
 }
 
 .aside-box{

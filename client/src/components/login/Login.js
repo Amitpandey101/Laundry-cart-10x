@@ -81,7 +81,7 @@ const Login = () => {
 			password: values.password,
 		};
 		console.log(data);
-		axios.post('http://localhost:3001/login',data)
+		axios.post('http://localhost:3002/login',data)
 		.then((res) => {
 			// console.log(res.data.token)
 			if(!res.data.token){

@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 
 const Header2 = () => {
     const history = useHistory()
+
 	const [show, setShow] = useState(false);
 	  const handleClose = () => setShow(false);
 	  const handleShow = () => setShow(true);
@@ -24,7 +25,7 @@ const Header2 = () => {
 	  };
 
   
-    
+
 
 	return (
 		<>
@@ -64,8 +65,7 @@ const Header2 = () => {
       <Modal
 	    
 		 size="md"
-		 aria-labelledby="contained-modal-title-vcenter"
-		 centered
+		 
         show={show}
         onHide={handleClose}
         backdrop="static"
