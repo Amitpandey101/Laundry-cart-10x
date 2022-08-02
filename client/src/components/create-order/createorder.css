@@ -10,6 +10,7 @@ input::-webkit-inner-spin-button {
     display: none;
   }
 
+
 .product-name{
     color: black;
     font-size: 15px;
@@ -67,7 +68,7 @@ input::-webkit-inner-spin-button {
     height: 100vh;
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     transition: 850ms;
@@ -80,7 +81,7 @@ input::-webkit-inner-spin-button {
   
   .nav-text {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 8px 0px 8px 16px;
     list-style: none;
@@ -136,3 +137,32 @@ input::-webkit-inner-spin-button {
 /* .back{
     
 } */
+.table thead th,td{
+  border: none;
+}
+.table td, .table th{
+  border-top: none;
+  border-bottom: 1px solid rgb(158, 156, 156);
+}
+.table-summary{
+  margin: 50px;
+}
+.services{
+  font-weight: 400;
+}
+.grandtotal{
+  height: 50px;
+  background-color: #5861AE;
+  width: 100%;
+  font-size:x-large;
+  font-weight: 600;
+  color: #FFF;
+}
+.charges{
+  height: 50px;
+}
+.summaryend{
+  height: 80px;
+  background-color: #F4F4F4;
+  width: 100%;
+}

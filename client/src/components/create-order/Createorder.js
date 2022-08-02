@@ -6,12 +6,12 @@ import { useHistory } from "react-router-dom";
 import "./createorder.css";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
 import { IconContext } from "react-icons";
-import Select from "react-select";
+import axios from "axios";
 
 const address = {
-  JPNagar: "Near Phone booth, 10th road,"
+  JPNagar: "Near Phone booth, 10th road,",
 };
 
 const Createorder = () => {
@@ -19,10 +19,8 @@ const Createorder = () => {
 
   const [sidebar, setSidebar] = useState(true);
 
-  
-
   const [show, setShow] = useState(false);
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [w, setw] = useState(0);
   const [i, seti] = useState(0);
@@ -34,7 +32,7 @@ const Createorder = () => {
   const [colorb, setcolorb] = useState(true);
 
   const [showt, setShowt] = useState(false);
-  const [pricet, setPricet] = useState();
+  const [pricet, setPricet] = useState(0);
   const [inputValuet, setInputValuet] = useState("");
   const [wt, setwt] = useState(0);
   const [it, setit] = useState(0);
@@ -46,7 +44,7 @@ const Createorder = () => {
   const [colorbt, setcolorbt] = useState(true);
 
   const [showtr, setShowtr] = useState(false);
-  const [pricetr, setPricetr] = useState();
+  const [pricetr, setPricetr] = useState(0);
   const [inputValuetr, setInputValuetr] = useState("");
   const [wtr, setwtr] = useState(0);
   const [itr, setitr] = useState(0);
@@ -102,7 +100,7 @@ const Createorder = () => {
   const resetInputField = () => {
     setInputValue("");
     setShow(false);
-    setPrice();
+    setPrice(0);
     setcolorw(true);
     setcolori(true);
     setcolort(true);
@@ -158,7 +156,7 @@ const Createorder = () => {
   const resetInputFieldt = () => {
     setInputValuet("");
     setShowt(false);
-    setPricet();
+    setPricet(0);
     setcolorwt(true);
     setcolorit(true);
     setcolortt(true);
@@ -214,7 +212,7 @@ const Createorder = () => {
   const resetInputFieldtr = () => {
     setInputValuetr("");
     setShowtr(false);
-    setPricetr();
+    setPricetr(0);
     setcolorwtr(true);
     setcoloritr(true);
     setcolorttr(true);
@@ -226,7 +224,7 @@ const Createorder = () => {
   };
 
   const [showj, setShowj] = useState(false);
-  const [pricej, setPricej] = useState();
+  const [pricej, setPricej] = useState(0);
   const [inputValuej, setInputValuej] = useState("");
   const [wj, setwj] = useState(0);
   const [ij, setij] = useState(0);
@@ -281,7 +279,7 @@ const Createorder = () => {
   const resetInputFieldj = () => {
     setInputValuej("");
     setShowj(false);
-    setPricej();
+    setPricej(0);
     setcolorwj(true);
     setcolorij(true);
     setcolortj(true);
@@ -292,7 +290,7 @@ const Createorder = () => {
     setbj(0);
   };
   const [showb, setShowb] = useState(false);
-  const [priceb, setPriceb] = useState();
+  const [priceb, setPriceb] = useState(0);
   const [inputValueb, setInputValueb] = useState("");
   const [wb, setwb] = useState(0);
   const [ib, setib] = useState(0);
@@ -347,7 +345,7 @@ const Createorder = () => {
   const resetInputFieldb = () => {
     setInputValueb("");
     setShowb(false);
-    setPriceb();
+    setPriceb(0);
     setcolorwb(true);
     setcolorib(true);
     setcolortb(true);
@@ -358,7 +356,7 @@ const Createorder = () => {
     setbb(0);
   };
   const [showg, setShowg] = useState(false);
-  const [priceg, setPriceg] = useState();
+  const [priceg, setPriceg] = useState(0);
   const [inputValueg, setInputValueg] = useState("");
   const [wg, setwg] = useState(0);
   const [ig, setig] = useState(0);
@@ -413,7 +411,7 @@ const Createorder = () => {
   const resetInputFieldg = () => {
     setInputValueg("");
     setShowg(false);
-    setPriceg();
+    setPriceg(0);
     setcolorwg(true);
     setcolorig(true);
     setcolortg(true);
@@ -424,7 +422,7 @@ const Createorder = () => {
     settg(0);
   };
   const [showo, setShowo] = useState(false);
-  const [priceo, setPriceo] = useState();
+  const [priceo, setPriceo] = useState(0);
   const [inputValueo, setInputValueo] = useState("");
   const [wo, setwo] = useState(0);
   const [io, setio] = useState(0);
@@ -479,7 +477,7 @@ const Createorder = () => {
   const resetInputFieldo = () => {
     setInputValueo("");
     setShowo(false);
-    setPriceo();
+    setPriceo(0);
     setcolorwo(true);
     setcolorio(true);
     setcolorto(true);
@@ -488,35 +486,150 @@ const Createorder = () => {
     setio(0);
     setto(0);
     setbo(0);
-
-    
-    
   };
-  const orderData = [
-    {productname:"Shirts",washtype:{Washing:w,Ironing:i,Dryclean:t,Chemicalwash:b},quantity:price,total:price * (w + i + t + b),cost:(w + i + t + b)},
-    {productname:"T-Shirts",washtype:{Washing:colorwt,Ironing:colorit,Dryclean:colortt,Chemicalwash:colorbt},quantity:pricet,total:pricet * (wt + it + tt + bt),cost:(wt + it + tt + bt)},
-    {productname:"Trousers",washtype:{Washing:colorwtr,Ironing:coloritr,Dryclean:colorttr,Chemicalwash:colorbtr},quantity:pricetr,total:pricetr * (wtr + itr + ttr + btr),cost:(wtr + itr + ttr + btr)},
-    {productname:"Jeans",washtype:{Washing:colorwj,Ironing:colorij,Dryclean:colortj,Chemicalwash:colorbj},quantity:pricej,total:pricej * (wj + ij + tj + bj),cost:(wj + ij + tj + bj)},
-    {productname:"Boxers",washtype:{Washing:colorwg,Ironing:colorig,Dryclean:colortg,Chemicalwash:colorbg},quantity:priceg,total:priceg * (wg + ig + tg + bg),cost:(wg + ig + tg + bg)},
-    {productname:"Joggers",washtype:{Washing:colorwb,Ironing:colorib,Dryclean:colortb,Chemicalwash:colorbb},quantity:priceb,total:priceb * (wb + ib + tb + bb),cost:(wb + ib + tb + bb)},
-    {productname:"Others",washtype:{Washing:colorwo,Ironing:colorio,Dryclean:colorto,Chemicalwash:colorbo},quantity:priceo,total:priceo * (wo + io + to + bo),cost:(wo + io + to + bo)}
-  ]
 
-  const ShowSidebar = () => {setSidebar(!sidebar);console.log(orderData)};
+  const [userEmail, setUserEmail] = useState("");
+  useEffect(() => {
+    setUserEmail(localStorage.getItem("email"));
+  }, []);
+
+  const orderData = [
+    {
+      productname: "Shirts",
+      washtype: { Washing: w, Ironing: i, Dryclean: t, Chemicalwash: b },
+      quantity: price,
+      total: price * (w + i + t + b),
+      cost: w + i + t + b,
+    },
+    {
+      productname: "T-Shirts",
+      washtype: { Washing: wt, Ironing: it, Dryclean: tt, Chemicalwash: bt },
+      quantity: pricet,
+      total: pricet * (wt + it + tt + bt),
+      cost: wt + it + tt + bt,
+    },
+    {
+      productname: "Trousers",
+      washtype: {
+        Washing: wtr,
+        Ironing: itr,
+        Dryclean: ttr,
+        Chemicalwash: btr,
+      },
+      quantity: pricetr,
+      total: pricetr * (wtr + itr + ttr + btr),
+      cost: wtr + itr + ttr + btr,
+    },
+    {
+      productname: "Jeans",
+      washtype: { Washing: wj, Ironing: ij, Dryclean: tj, Chemicalwash: bj },
+      quantity: pricej,
+      total: pricej * (wj + ij + tj + bj),
+      cost: wj + ij + tj + bj,
+    },
+    {
+      productname: "Boxers",
+      washtype: { Washing: wg, Ironing: ig, Dryclean: tg, Chemicalwash: bg },
+      quantity: priceg,
+      total: priceg * (wg + ig + tg + bg),
+      cost: wg + ig + tg + bg,
+    },
+    {
+      productname: "Joggers",
+      washtype: { Washing: wb, Ironing: ib, Dryclean: tb, Chemicalwash: bb },
+      quantity: priceb,
+      total: priceb * (wb + ib + tb + bb),
+      cost: wb + ib + tb + bb,
+    },
+    {
+      productname: "Others",
+      washtype: { Washing: wo, Ironing: io, Dryclean: to, Chemicalwash: bo },
+      quantity: priceo,
+      total: priceo * (wo + io + to + bo),
+      cost: wo + io + to + bo,
+    },
+  ];
+
+  const [sub, setsub] = useState(0);
+
+  const subval = () => {
+    let arr = [];
+    orderData.forEach((e) => arr.push(e.total));
+    let sum = 0;
+    arr.forEach((x) => {
+      sum += x;
+    });
+    setsub(sum);
+    console.log(arr.length)
+  };
+  
+
+  const ShowSidebar = () => {
+    setSidebar(!sidebar);
+    console.log(orderData);
+  };
   const history = useHistory();
   const cancelorderHandler = () => {
     history.push("/pastorder");
   };
 
+  const [opacity, SetOpacity] = useState(1);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    // toggle
+    setIsActive((current) => !current);
+  };
+
+  //database connection and object
+  const onconfirmhandler = () =>{
+    const newOrder={ email:userEmail, order:orderData , Subtotal:sub , Total:sub+90}
+    axios.post('http://localhost:3001/createorder',{data:{data:newOrder},headers: { authorization: localStorage.getItem("token") }})
+    .then((res) => {
+      console.log(res.data)
+      if(res.data.message.includes('successfully')){
+        console.log('order sent successfully')
+        console.log(newOrder)
+        alert(res.data.message)
+      }else{
+
+        alert(res.data.error)
+      }
+    
+      
+      
+      
+    })
+    .catch((error)=>{console.log(error)})
+  
+  }
+
+
+  
+
+
+ 
+
+
   return (
     <>
-      <Header2></Header2>
-      <div className="box">
-        <div className="row">
-          <div className="col-lg-1 col-md-1 p-0">
-            <Sidebar></Sidebar>
-          </div>
-        
+      <div
+      className="page-document"
+        style={{
+          opacity,
+          backgroundColor: isActive ? "grey" : "",
+          color: isActive ? "grey" : "",
+          position: isActive ? "fixed" : ""
+          // display: isActive ? "none" : ""
+        }}
+      >
+        <Header2></Header2>
+        <div className="box">
+          <div className="row">
+            <div className="col-lg-1 col-md-1 p-0">
+              <Sidebar></Sidebar>
+            </div>
+
             <div className="col-lg-11">
               {/* Remaining Sections  */}
               <div className="container">
@@ -584,11 +697,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -602,11 +717,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -620,11 +737,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -638,11 +757,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -726,11 +847,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -744,11 +867,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -762,11 +887,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -780,11 +907,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -868,11 +997,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -886,11 +1017,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -904,11 +1037,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -922,11 +1057,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1010,11 +1147,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1028,11 +1167,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1046,11 +1187,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1064,11 +1207,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1152,11 +1297,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1170,11 +1317,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1188,11 +1337,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1206,11 +1357,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1294,11 +1447,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1312,11 +1467,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1330,11 +1487,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1348,11 +1507,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1436,11 +1597,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./washing-machine.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./washing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1454,11 +1617,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./ironing.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./ironing-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1472,11 +1637,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./towel.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./towel-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1490,11 +1657,13 @@ const Createorder = () => {
                               <img
                                 className="service-icon"
                                 src="./bleach.svg"
+                                alt="service-icon"
                               ></img>
                             ) : (
                               <img
                                 className="service-icon"
                                 src="./bleach-blue.svg"
+                                alt="service-icon"
                               ></img>
                             )}
                           </div>
@@ -1567,69 +1736,146 @@ const Createorder = () => {
                       fontSize: "16px",
                       cursor: "pointer",
                     }}
-                    onClick={ShowSidebar}
+                    onClick={() => {
+                      SetOpacity(0.5);
+                      ShowSidebar();
+                      handleClick();
+                      subval();
+                    }}
                   >
                     Proceed
                   </button>
                 </div>
-                <div>
-                <IconContext.Provider value={{ color: "#fff" }}>
-                  <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-                    <ul className="nav-menu-items">
-                      <li className="navbar-toggle">
-                        <p>Summary</p>
-                        <Link
-                          to="#"
-                          className="menu-bars"
-                          onClick={ShowSidebar}
-                        >
-                          <AiIcons.AiOutlineClose />
-                        </Link>
-                      </li>
-                      <li className="d-flex flex-row justify-content-around align-items-center store-info">
-                        <select
-                          className="custom"
-                          onChange={(e) => {
-                            setstore(true);
-                          }}
-                        >
-                          <option value=""></option>
-                          <option value="JPNager">JP Nager</option>
-                        </select>
-
-                        <div className="d-flex flex-column pr-2">
-                          <div>
-                            <b>Store address:</b>
-                            {store && <div> {address.JPNagar}</div>}
-                          </div>
-                        </div>
-                        <div>
-                          <b>Phone: </b> {store && <div>91 9999999999</div>}
-                        </div>
-                      </li>
-                      <div>Order Details
-                         <div>
-                          <ul>
-                            {
-                              orderData.map((item,key)=>{
-                                return(
-                                  item.quantity>0?
-                                  <div>{item.productname} {item.quantity} {item.total} {item.cost} {item.washtype.key}{item.washtype.key}{item.washtype.key}{item.washtype.key}</div>:<div></div>
-                                )
-                              })
-                            }
-                          </ul>
-
-                        </div> 
-                      </div>
-                    </ul>
-                  </nav>
-                </IconContext.Provider>
-                </div>
               </div>
             </div>
-          
+          </div>
         </div>
+      </div>
+      <div>
+        <IconContext.Provider value={{ color: "#fff" }}>
+          <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+            <ul className="nav-menu-items">
+              <li className="navbar-toggle">
+                <p>Summary</p>
+                <Link
+                  to="#"
+                  className="menu-bars"
+                  onClick={() => {
+                    SetOpacity(1);
+                    ShowSidebar();
+                    handleClick();
+                  }}
+                >
+                  <AiIcons.AiOutlineClose />
+                </Link>
+              </li>
+              <li className="d-flex flex-row justify-content-around align-items-center store-info">
+                <select
+                  className="custom"
+                  onChange={(e) => {
+                    setstore(!store);
+                  }}
+                >
+                  <option value=""></option>
+                  <option value="JPNager">JP Nager</option>
+                </select>
+
+                <div className="d-flex flex-column pr-2">
+                  <div>
+                    <b>Store address:</b>
+                    {store && <div> {address.JPNagar}</div>}
+                  </div>
+                </div>
+                <div>
+                  <b>Phone: </b> {store && <div>91 9999999999</div>}
+                </div>
+              </li>
+              <div className="table-summary">
+                Order Details
+                <div>
+                  {orderData.map((item, key) => {
+                    return item.quantity > 0 ? (
+                      <table class="table table-borderless">
+                        <thead>
+                          <tr>
+                            <th scope="col" style={{ width: "35%" }}></th>
+                            <th scope="col" style={{ width: "45%" }}></th>
+                            <th scope="col" style={{ width: "7%" }}></th>
+                            <th scope="col" style={{ width: "10%" }}></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style={{ height: "10%" }}>
+                            <th key={key} scope="row">
+                              {item.productname}
+                            </th>
+                            <th
+                              key={key}
+                              className="d-flex flex-row mt-1 services"
+                            >
+                              {item.washtype.Washing > 0 ? (
+                                <i>Washing&nbsp;&nbsp;</i>
+                              ) : null}
+                              {item.washtype.Ironing > 0 ? (
+                                <i>Ironing&nbsp;&nbsp;</i>
+                              ) : null}
+                              {item.washtype.Dryclean > 0 ? (
+                                <i>Dryclean&nbsp;&nbsp;</i>
+                              ) : null}
+                              {item.washtype.Chemicalwash > 0 ? (
+                                <i>Chemicalwash</i>
+                              ) : null}
+                            </th>
+                            <th key={key}>
+                              {item.quantity}x{item.cost}=
+                            </th>
+
+                            <th
+                              key={key}
+                              style={{ color: "#5861AE", fontSize: "larger" }}
+                            >
+                              {item.total}
+                              {/* {setsub(item.total)} */}
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    ) : (
+                      <div></div>
+                    );
+                  })}
+                </div>
+                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{sub}</b></span>
+                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
+                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs{sub+90}</div>
+                <p className="pt-4">Address</p>
+                <div></div>
+               
+
+              </div>
+              <div className="d-flex flex-row justify-content-end align-items-center mr-4 pr-5 summaryend">{store && <button
+                    type="button"
+                    className="btn"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                    style={{
+                      border: "1px solid #5861AE",
+                      backgroundColor: "#5861AE",
+                      color: "#fff",
+                      padding: "2px 20px",
+                      fontSize: "16px",
+                      cursor: "pointer",
+                    }}
+                    onClick={()=>{
+                      onconfirmhandler();
+                    }}
+                  >
+                    Confirm
+                  </button>}</div>
+            </ul>
+          </nav>
+        </IconContext.Provider>
       </div>
     </>
   );
