@@ -3,9 +3,9 @@ const jwt = require("jsonwebtoken");
 const OrderData = require("../models/order");
 
 const deleteorder = async (req, res) => {
-  console.log(req.body.data)
-  // console.log(req.data)
-  console.log(req.headers.authorization)
+  console.log(req.body.OrderData)
+
+  // console.log(req.headers.authorization)
   if (req.headers.authorization) {
     try {
       const  email  = jwt.verify( req.headers.authorization,process.env.SECRET_KEY)
