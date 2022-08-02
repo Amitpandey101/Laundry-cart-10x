@@ -4,12 +4,18 @@ import { useState } from 'react';
 import Header2 from '../header-2/header2';
 import Sidebar from '../sidebar/sidebar';
 import './landingpage.css'
+import { useHistory } from 'react-router-dom';
 
 const LandingPage = () => {
+  const history = useHistory()
     const [name , setName] = useState('')
     useEffect(()=>{
+      if (!localStorage.getItem("token")) {
+        history.push("/");
+      }
         setName(localStorage.getItem('name'))
     },[])
+    
   return (
     <>
     <Header2></Header2>
