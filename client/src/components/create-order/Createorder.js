@@ -6,10 +6,10 @@ import { useHistory } from "react-router-dom";
 import "./createorder.css";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { IconContext } from "react-icons";
 import axios from "axios";
-import Copyright from "../copyright/copyright";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const address = {
   JPNagar: "Near Phone booth, 10th road,",
@@ -17,6 +17,8 @@ const address = {
 
 const Createorder = () => {
   const [store, setstore] = useState(false);
+
+  console.log("height=="+window.document.body.offsetHeight)
 
   const [sidebar, setSidebar] = useState(true);
 
@@ -489,10 +491,10 @@ const Createorder = () => {
     setbo(0);
   };
 
-  const [userEmail, setUserEmail] = useState("");
-  useEffect(() => {
-    setUserEmail(localStorage.getItem("email"));
-  }, []);
+  // const [userEmail, setUserEmail] = useState("");
+  // useEffect(() => {
+  //   setUserEmail(localStorage.getItem("email"));
+  // }, []);
 
   const orderData = [
     {
@@ -582,6 +584,10 @@ const Createorder = () => {
     setIsActive((current) => !current);
   };
 
+  const [showmodal, setshowmodal] = useState(false)
+  const handleClosemodal = () => setshowmodal(false);
+	  const handleShowmodal = () => setshowmodal(true);
+
   //database connection and object
   const onconfirmhandler = () =>{
     const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90}
@@ -618,7 +624,7 @@ const Createorder = () => {
       className="page-document"
         style={{
           opacity,
-          // backgroundColor: isActive ? "white" : "",
+          backgroundColor: isActive ? "" : ""
           // color: isActive ? "white" : "",
           // position: isActive ? "fixed" : ""
           // display: isActive ? "none" : ""
@@ -1738,7 +1744,7 @@ const Createorder = () => {
                       cursor: "pointer",
                     }}
                     onClick={() => {
-                      SetOpacity(0.5);
+                      SetOpacity(0.3);
                       ShowSidebar();
                       handleClick();
                       subval();
@@ -1848,8 +1854,8 @@ const Createorder = () => {
                   })}
                 </div>
                 <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{sub}</b></span>
-                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
-                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs{sub+90}</div>
+                {store && <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>}
+                {store && <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs{sub+90}</div>}
                 <p className="pt-4">Address</p>
                 <div></div>
                
@@ -1871,6 +1877,11 @@ const Createorder = () => {
                     }}
                     onClick={()=>{
                       onconfirmhandler();
+                        SetOpacity(1);
+                        ShowSidebar();
+                        handleClick();
+                        handleShowmodal();
+                     
                     }}
                   >
                     Confirm
@@ -1879,6 +1890,25 @@ const Createorder = () => {
           </nav>
         </IconContext.Provider>
       </div>
+      <Modal
+	    
+		 size="md"
+		 aria-labelledby="contained-modal-title-vcenter"
+		 centered
+     show={showmodal}
+     onHide={handleClosemodal}
+        backdrop="static"
+        keyboard={false}
+		className='modal'
+      >
+   
+        <Modal.Body className='text-capitalize create-order-modal-body'>
+			<img className='tick-img' src="./tickicon.svg" alt="" />
+      <Modal.Title >you order is placed successfully!!!</Modal.Title>
+         you can track your order in the "orders" section
+         <Button className='go-to-order' onClick={cancelorderHandler} variant="primary">Go to orders</Button>
+        </Modal.Body>
+      </Modal>
       
     </>
     
