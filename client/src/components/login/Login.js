@@ -22,6 +22,7 @@ const Login = () => {
 	const [id, setId] = useState('');
 	const [inValidEmail, setInvalidEmail] = useState(false);
 	const [inValidPhone, setInvalidPhone] = useState(false);
+	const [inValidPassword , setInvalidPassword] = useState(false);
 
 	const [values, setValues] = useState({
 		password: '',
@@ -42,6 +43,7 @@ const Login = () => {
 	};
 
 	const handlePasswordChange = (prop) => (event) => {
+		setInvalidPassword(false)
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
@@ -79,7 +81,7 @@ const Login = () => {
 			password: values.password,
 		};
 		console.log(data);
-		axios.post('http://localhost:3001/login',data)
+		axios.post('http://localhost:3002/login',data)
 		.then((res) => {
 			// console.log(res.data.token)
 			if(!res.data.token){
@@ -90,6 +92,8 @@ const Login = () => {
 				}else if(res.data.message.includes('Phone')){
 					// alert(res.data.message)
 					setInvalidPhone(true)
+				}else if(res.data.message.includes('password')){
+					setInvalidPassword(true)
 				}else{
 					alert(res.data.message)
 				}
@@ -111,8 +115,8 @@ const Login = () => {
 		<>
 			<Header></Header>
 			<section>
-				<div className="row main-b">
-					<div className="col-lg-6 part-1">
+				<div className="row min-h">
+					<div className="col-lg-6 col-md-6 col-sm-6 part-1-login">
 						<div className="part1-child">
 							<h2 className="head-2">Laundry</h2>
 							<h2 className="head-2">Service</h2>
@@ -125,14 +129,14 @@ const Login = () => {
 						</div>
 						<div className="line"></div>
 					</div>
-					<div className="col-lg-6 part-2">
+					<div className="col-lg-6 col-md-6 col-sm-6 part-2">
 						<div className="container c2-box">
 							<form onSubmit={formSubmitHandle}>
 								<div>
 									<h3 className="head-3">SIGN IN</h3>
 
 									<div className="row part-2-box">
-										<div className="col-lg-12">
+										<div className="col-lg-12  col-md-10 col-sm-8 ">
 											<div className="input-wrapper"></div>
 											<input
 												type="text"
@@ -154,7 +158,7 @@ const Login = () => {
 												Email/Phone
 											</label>
 										</div>
-										<div className="col-lg-12">
+										<div className="col-lg-12  col-md-10 col-sm-8 ">
 											<div className="input-wrapper"></div>
 											<input
 												type={values.showPassword ? 'text' : 'password'}
@@ -168,7 +172,9 @@ const Login = () => {
 												value={values.password}
 												
 											/>
-											
+											{inValidPassword && <label className="new-label-warning" htmlFor="email">
+											<i className='margin-right-pass'>Incorrect Password</i>
+											</label>}
 											<label className="new-label" htmlFor="password">
 												Password
 											</label>
@@ -190,9 +196,9 @@ const Login = () => {
 												)}
 											</span>
 										</div>
-										<div className='f-pass'>
-											<p>Forget Password?</p>
-										</div>
+										
+											<span className='f-pass'>Forget Password?</span>
+										
 									</div>
 								</div>
 								

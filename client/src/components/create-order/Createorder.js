@@ -552,6 +552,10 @@ const Createorder = () => {
       cost: wo + io + to + bo,
     },
   ];
+//   const [totalItempast ,setTotalItempast] = useState(0)
+// const itempastorderset = ()=>{
+//   setTotalItempast(0+price+priceb+priceg+pricej+priceo+pricet+pricetr)
+// }
 
   const [sub, setsub] = useState(0);
 
@@ -587,11 +591,15 @@ const Createorder = () => {
   const [showmodal, setshowmodal] = useState(false)
   const handleClosemodal = () => setshowmodal(false);
 	  const handleShowmodal = () => setshowmodal(true);
-
+  
+  // totalItempast(price+priceb+priceg+pricej+priceo+pricet+pricetr)
+    
+ 
   //database connection and object
   const onconfirmhandler = () =>{
-    const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90}
-    axios.post('http://localhost:3001/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
+    
+    const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90,totalItem:parseInt(price)+parseInt(priceb)+parseInt(priceg)+parseInt(pricej)+parseInt(priceo)+parseInt(pricet)+parseInt(pricetr)}
+    axios.post('http://localhost:3002/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
     .then((res) => {
       console.log(res.data)
       if(res.data.message.includes('successfully')){
@@ -602,9 +610,6 @@ const Createorder = () => {
 
         alert(res.data.error)
       }
-    
-      
-      
       
     })
     .catch((error)=>{console.log(error)})
@@ -1881,7 +1886,7 @@ const Createorder = () => {
                         ShowSidebar();
                         handleClick();
                         handleShowmodal();
-                     
+                        // itempastorderset();
                     }}
                   >
                     Confirm
@@ -1899,14 +1904,29 @@ const Createorder = () => {
      onHide={handleClosemodal}
         backdrop="static"
         keyboard={false}
-		className='modal'
+		className='modal-create-order'
       >
    
-        <Modal.Body className='text-capitalize create-order-modal-body'>
-			<img className='tick-img' src="./tickicon.svg" alt="" />
-      <Modal.Title >you order is placed successfully!!!</Modal.Title>
-         you can track your order in the "orders" section
-         <Button className='go-to-order' onClick={cancelorderHandler} variant="primary">Go to orders</Button>
+        <Modal.Body className='text-capitalize create-order-modal-body p-5'>
+
+			
+      <div className="modal-create-order-box">
+      <img className='tick-img' src="./tickicon.svg" alt="" />
+      <div className="create-mod-head">
+      <h3>you order is placed </h3>
+        <h3>successfully!!!</h3>
+      </div>
+      <div className="create-mod-content">
+      <span> you can track your order in the </span>
+        <span> "orders" section</span>
+      </div>
+       
+        
+        <Button className='go-to-order' onClick={cancelorderHandler} variant="primary">Go to orders</Button>
+      </div>
+      
+       
+         
         </Modal.Body>
       </Modal>
       
