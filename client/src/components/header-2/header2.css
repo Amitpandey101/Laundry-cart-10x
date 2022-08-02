@@ -112,4 +112,5 @@ border-left: 2px solid #E3E3E3;
 .modal-body{
     font-size: large;
     font-weight: 400;
+    height: 150px;
 }
