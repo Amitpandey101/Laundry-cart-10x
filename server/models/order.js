@@ -13,7 +13,8 @@ const OrderSchema = new mongoose.Schema({
   email:{type:String, required:true},
   order:{type:Array},
   Subtotal:{type:Number},
-  Total:{type:Number}
+  Total:{type:Number},
+  totalItem:{type:Number}
 });
 
 const OrderData = new mongoose.model('LaundryUserOrders' , OrderSchema)

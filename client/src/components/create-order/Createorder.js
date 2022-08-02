@@ -552,6 +552,10 @@ const Createorder = () => {
       cost: wo + io + to + bo,
     },
   ];
+//   const [totalItempast ,setTotalItempast] = useState(0)
+// const itempastorderset = ()=>{
+//   setTotalItempast(0+price+priceb+priceg+pricej+priceo+pricet+pricetr)
+// }
 
   const [sub, setsub] = useState(0);
 
@@ -587,10 +591,14 @@ const Createorder = () => {
   const [showmodal, setshowmodal] = useState(false)
   const handleClosemodal = () => setshowmodal(false);
 	  const handleShowmodal = () => setshowmodal(true);
-
+  
+  // totalItempast(price+priceb+priceg+pricej+priceo+pricet+pricetr)
+    
+ 
   //database connection and object
   const onconfirmhandler = () =>{
-    const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90}
+    
+    const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90,totalItem:parseInt(price)+parseInt(priceb)+parseInt(priceg)+parseInt(pricej)+parseInt(priceo)+parseInt(pricet)+parseInt(pricetr)}
     axios.post('http://localhost:3002/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
     .then((res) => {
       console.log(res.data)
@@ -602,9 +610,6 @@ const Createorder = () => {
 
         alert(res.data.error)
       }
-    
-      
-      
       
     })
     .catch((error)=>{console.log(error)})
@@ -1881,7 +1886,7 @@ const Createorder = () => {
                         ShowSidebar();
                         handleClick();
                         handleShowmodal();
-                     
+                        // itempastorderset();
                     }}
                   >
                     Confirm

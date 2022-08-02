@@ -3,7 +3,7 @@
 	min-height: 100vh;
   }
 
-.part-1 {
+.part-1-login {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;

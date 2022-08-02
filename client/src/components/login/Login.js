@@ -116,7 +116,7 @@ const Login = () => {
 			<Header></Header>
 			<section>
 				<div className="row min-h">
-					<div className="col-lg-6 col-md-6 col-sm-6 part-1">
+					<div className="col-lg-6 col-md-6 col-sm-6 part-1-login">
 						<div className="part1-child">
 							<h2 className="head-2">Laundry</h2>
 							<h2 className="head-2">Service</h2>

@@ -11,20 +11,20 @@ const deleteorder = async (req, res) => {
           if (email) {
             OrderData.deleteOne({ _id: req.params._id })
               .then(() => {
-                res.status(200).send({ Status: "Success" });
+                res.send({ Status: "Success" });
               });
           } else {
-            res.status(400).send("Unauthorized user to delete order");
+            res.send("Unauthorized user to delete order");
           }
         } else {
-          res.status(400).send("order does not exist");
+          Response.send("order does not exist");
         }
       });
     } catch (err) {
       res.send("unauthorized User");
     }
   }else{
-    res.status(400).send("Missing Authorization token")
+    res.send("Missing Authorization token")
   }
 };
 

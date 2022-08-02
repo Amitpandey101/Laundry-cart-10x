@@ -1,9 +1,10 @@
 
-.part-1 {
+.part-1-signup {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	
 }
 .head-2 {
 	color: #5861ae;
