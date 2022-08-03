@@ -211,3 +211,6 @@ input::-webkit-inner-spin-button {
   flex-direction: column; 
   text-align: center;
 }
+.pas{
+  width: auto;
+}
