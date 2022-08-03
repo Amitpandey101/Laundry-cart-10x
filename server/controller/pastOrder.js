@@ -4,12 +4,12 @@ const OrderData=require("../models/order")
 
 
 const pastorder = async (req,res)=>{
-  // console.log(req.headers.authorization)
+  console.log(req.headers.authorization)
 if(req.headers.authorization){
   
         try {
-          const email = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
-          
+          const {email} = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
+          console.log(email)
           OrderData.find({email: email}).then((orders)=> {
               // res.status(200).send({orders});
               res.json({orders:orders})

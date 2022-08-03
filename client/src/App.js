@@ -5,7 +5,7 @@ import { Switch , Route } from 'react-router-dom';
 import Copyright from './components/copyright/copyright';
 import Pastorder from './components/pastorder/pastorder';
 import Createorder from './components/create-order/Createorder';
-
+import LandingPage from './components/landingPage/landingPage';
 
 
 function App() {
@@ -13,6 +13,9 @@ function App() {
       <>
      
       <Switch>
+        <Route path='/landingpage'>
+        <LandingPage></LandingPage>
+        </Route>
       <Route path='/createorder'>
         <Createorder></Createorder>
         </Route>
@@ -26,8 +29,10 @@ function App() {
       <Login></Login>
       </Route>
       </Switch>
-      
       <Copyright></Copyright>
+      
+      
+      
     
       
      

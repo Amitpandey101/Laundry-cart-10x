@@ -1,7 +1,9 @@
-.main-b {
-	height: 650px;
-}
-.part-1 {
+.min-h{
+	position: relative;
+	min-height: 100vh;
+  }
+
+.part-1-login {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -112,7 +114,8 @@
 .f-pass {
 	font-weight: 500;
 	font-size: 14px;
-	margin-left: 21rem;
+	width: 70%;
+	text-align: right;
 	letter-spacing: 0.64px;
 	color: #4552c1;
 	text-transform: capitalize;
@@ -214,4 +217,7 @@ margin: -1.5rem;
 }
 .margin-bit{
 	margin-left: -1.1rem;
+}
+.margin-right-pass{
+	margin-left: 1rem;
 }

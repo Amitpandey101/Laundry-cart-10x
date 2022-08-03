@@ -6,9 +6,10 @@ import { useHistory } from "react-router-dom";
 import "./createorder.css";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { IconContext } from "react-icons";
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const address = {
   JPNagar: "Near Phone booth, 10th road,",
@@ -16,6 +17,8 @@ const address = {
 
 const Createorder = () => {
   const [store, setstore] = useState(false);
+
+  console.log("height=="+window.document.body.offsetHeight)
 
   const [sidebar, setSidebar] = useState(true);
 
@@ -488,10 +491,10 @@ const Createorder = () => {
     setbo(0);
   };
 
-  const [userEmail, setUserEmail] = useState("");
-  useEffect(() => {
-    setUserEmail(localStorage.getItem("email"));
-  }, []);
+  // const [userEmail, setUserEmail] = useState("");
+  // useEffect(() => {
+  //   setUserEmail(localStorage.getItem("email"));
+  // }, []);
 
   const orderData = [
     {
@@ -549,6 +552,10 @@ const Createorder = () => {
       cost: wo + io + to + bo,
     },
   ];
+//   const [totalItempast ,setTotalItempast] = useState(0)
+// const itempastorderset = ()=>{
+//   setTotalItempast(0+price+priceb+priceg+pricej+priceo+pricet+pricetr)
+// }
 
   const [sub, setsub] = useState(0);
 
@@ -581,10 +588,18 @@ const Createorder = () => {
     setIsActive((current) => !current);
   };
 
+  const [showmodal, setshowmodal] = useState(false)
+  const handleClosemodal = () => setshowmodal(false);
+	  const handleShowmodal = () => setshowmodal(true);
+  
+  // totalItempast(price+priceb+priceg+pricej+priceo+pricet+pricetr)
+    
+ 
   //database connection and object
   const onconfirmhandler = () =>{
-    const newOrder={ email:userEmail, order:orderData , Subtotal:sub , Total:sub+90}
-    axios.post('http://localhost:3001/createorder',{data:{data:newOrder},headers: { authorization: localStorage.getItem("token") }})
+    
+    const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90,totalItem:parseInt(price)+parseInt(priceb)+parseInt(priceg)+parseInt(pricej)+parseInt(priceo)+parseInt(pricet)+parseInt(pricetr)}
+    axios.post('http://localhost:3002/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
     .then((res) => {
       console.log(res.data)
       if(res.data.message.includes('successfully')){
@@ -595,9 +610,6 @@ const Createorder = () => {
 
         alert(res.data.error)
       }
-    
-      
-      
       
     })
     .catch((error)=>{console.log(error)})
@@ -613,28 +625,30 @@ const Createorder = () => {
 
   return (
     <>
+    <Header2></Header2>
       <div
-      className="page-document"
+      className="page-document div-height"
         style={{
           opacity,
-          backgroundColor: isActive ? "grey" : "",
-          color: isActive ? "grey" : "",
-          position: isActive ? "fixed" : ""
+          backgroundColor: isActive ? "" : ""
+          // color: isActive ? "white" : "",
+          // position: isActive ? "fixed" : ""
           // display: isActive ? "none" : ""
         }}
       >
-        <Header2></Header2>
-        <div className="box">
+        
+        
+        <div className="create-2-main-box">
           <div className="row">
             <div className="col-lg-1 col-md-1 p-0">
-              <Sidebar></Sidebar>
+            <Sidebar></Sidebar>
             </div>
 
             <div className="col-lg-11">
               {/* Remaining Sections  */}
-              <div className="container">
+              <div className="create-order-box">
                 <p>Create order </p>
-                <table class="table" style={{ border: "1px solid #E0E0E0" }}>
+                <table class="table product-table" style={{ border: "1px solid #E0E0E0"}}>
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col" style={{ width: "35%" }}>
@@ -1737,7 +1751,7 @@ const Createorder = () => {
                       cursor: "pointer",
                     }}
                     onClick={() => {
-                      SetOpacity(0.5);
+                      SetOpacity(0.3);
                       ShowSidebar();
                       handleClick();
                       subval();
@@ -1751,6 +1765,7 @@ const Createorder = () => {
           </div>
         </div>
       </div>
+      
       <div>
         <IconContext.Provider value={{ color: "#fff" }}>
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -1846,8 +1861,8 @@ const Createorder = () => {
                   })}
                 </div>
                 <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{sub}</b></span>
-                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
-                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs{sub+90}</div>
+                {store && <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>}
+                {store && <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs{sub+90}</div>}
                 <p className="pt-4">Address</p>
                 <div></div>
                
@@ -1869,6 +1884,11 @@ const Createorder = () => {
                     }}
                     onClick={()=>{
                       onconfirmhandler();
+                        SetOpacity(1);
+                        ShowSidebar();
+                        handleClick();
+                        handleShowmodal();
+                        // itempastorderset();
                     }}
                   >
                     Confirm
@@ -1877,7 +1897,43 @@ const Createorder = () => {
           </nav>
         </IconContext.Provider>
       </div>
+      <Modal
+	    
+		 size="md"
+		 aria-labelledby="contained-modal-title-vcenter"
+		 centered
+     show={showmodal}
+     onHide={handleClosemodal}
+        backdrop="static"
+        keyboard={false}
+		className='modal-create-order'
+      >
+   
+        <Modal.Body className='text-capitalize create-order-modal-body p-5'>
+
+			
+      <div className="modal-create-order-box">
+      <img className='tick-img' src="./tickicon.svg" alt="" />
+      <div className="create-mod-head">
+      <h3>you order is placed </h3>
+        <h3>successfully!!!</h3>
+      </div>
+      <div className="create-mod-content">
+      <span> you can track your order in the </span>
+        <span> "orders" section</span>
+      </div>
+       
+        
+        <Button className='go-to-order' onClick={cancelorderHandler} variant="primary">Go to orders</Button>
+      </div>
+      
+       
+         
+        </Modal.Body>
+      </Modal>
+      
     </>
+    
   );
 };
 
