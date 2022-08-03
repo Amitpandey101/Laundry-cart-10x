@@ -605,7 +605,7 @@ const Createorder = () => {
       if(res.data.message.includes('successfully')){
         console.log('order sent successfully')
         console.log(newOrder)
-        alert(res.data.message)
+        // alert(res.data.message)
       }else{
 
         alert(res.data.error)
@@ -674,7 +674,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/shirts.jpg"
                               alt=""
                             />
                           </span>
@@ -824,7 +824,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/tshirts.jpg"
                               alt=""
                             />
                           </span>
@@ -974,7 +974,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/trousers.jpg"
                               alt=""
                             />
                           </span>
@@ -1124,7 +1124,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/jeans.jpg"
                               alt=""
                             />
                           </span>
@@ -1274,7 +1274,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/boxers.jpg"
                               alt=""
                             />
                           </span>
@@ -1424,7 +1424,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/joggers.jpg"
                               alt=""
                             />
                           </span>
@@ -1574,7 +1574,7 @@ const Createorder = () => {
                           <span className="user-acc">
                             <img
                               className="product-img"
-                              src="./acc.png"
+                              src="./assets/others.jpeg"
                               alt=""
                             />
                           </span>
