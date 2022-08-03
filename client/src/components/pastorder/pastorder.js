@@ -15,6 +15,7 @@ import { IconContext } from 'react-icons';
 import { getOverlayDirection } from 'react-bootstrap/esm/helpers';
 
 const Pastorder = () => {
+  const [address,setAddress] = useState('')
 	const [modalShow, setModalShow] = useState(false);
 	const [cancelorder, setcancelorder] = useState('Cancel Order');
 	const [order, setorder] = useState('');
@@ -54,6 +55,7 @@ const Pastorder = () => {
 			.then((data) => {
 				setorderData(data.data.orders);
 			});
+      setAddress(localStorage.getItem('address'))
 	}, []);
 	console.log(orderData);
 
@@ -272,9 +274,7 @@ const Pastorder = () => {
                 <span className="d-flex flex-row justify-content-end align-items-start mr-3 pr-1 charges-pastorders">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
                 <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal-pastorders">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs {ordertotal}</div>
                 <p className="pt-4">Address</p>
-                <div></div>
-               
-
+                <div className='address-box'><p>{address}</p></div>
               </div>
               <div className="d-flex flex-row justify-content-end align-items-center mr-4 pr-5 summaryend-pastorders">
                 <button className='Cancel-order-red btn' onClick={()=>{setModalShow(true);setsummaryp(true)}}> Cancel Order</button>
