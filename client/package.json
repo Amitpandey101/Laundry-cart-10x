@@ -16,21 +16,18 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-
     "country-state-city": "^3.0.1",
     "mdb-react-ui-kit": "^4.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
-    "react-confirm-box": "^1.2.0",
-
-
     "react-bootstrap-icons": "^1.8.4",
-
+    "react-confirm-box": "^1.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^5.3.3",
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
+    "react-step-progress-bar": "^1.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,8 +35,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-   
-
   },
   "eslintConfig": {
     "extends": [

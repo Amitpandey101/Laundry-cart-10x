@@ -6,6 +6,7 @@ import Copyright from './components/copyright/copyright';
 import Pastorder from './components/pastorder/pastorder';
 import Createorder from './components/create-order/Createorder';
 import LandingPage from './components/landingPage/landingPage';
+import StepProgressBar from './components/progress-bar/Progress';
 
 
 
@@ -14,6 +15,9 @@ function App() {
       <>
      
       <Switch>
+      <Route path='/progress'>
+        <StepProgressBar></StepProgressBar>
+        </Route>
         <Route path='/landingpage'>
         <LandingPage></LandingPage>
         </Route>
