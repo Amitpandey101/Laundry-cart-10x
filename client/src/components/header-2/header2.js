@@ -47,7 +47,7 @@ const Header2 = () => {
 						<li className="nav-item user"  onClick={handleShow}>
 							<span to="/" className="nav-link cust-link-acc">
 								<span className="user-acc">
-                                    <img className='acc-img' src="./acc.png" alt="Image-icons" />
+                                    <img className='acc-img' src="./acc.png" alt="" />
 								</span>
                                 <div className='user-name'>
                                 <span >Hi! {userName}</span>
@@ -73,7 +73,7 @@ const Header2 = () => {
           <Modal.Title >Alert</Modal.Title>
         </Modal.Header>
         <Modal.Body className='text-capitalize modal-body-main'>
-			<img className='alert-img' src="./red-alert.jpg" alt="Image-icons" />
+			<img className='alert-img' src="./red-alert.jpg" alt="" />
          Are you sure want to logout ?
         </Modal.Body>
         <Modal.Footer>

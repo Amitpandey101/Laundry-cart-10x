@@ -80,17 +80,13 @@ const Login = () => {
 			phone: phone,
 			password: values.password,
 		};
-		console.log(data);
 		axios.post('http://localhost:3002/login',data)
 		.then((res) => {
-			// console.log(res.data.token)
 			if(!res.data.token){
 				
 				if(res.data.message.includes('Email') ){
-					// alert(res.data.message)
 					setInvalidEmail(true)
 				}else if(res.data.message.includes('Phone')){
-					// alert(res.data.message)
 					setInvalidPhone(true)
 				}else if(res.data.message.includes('password')){
 					setInvalidPassword(true)
@@ -103,7 +99,6 @@ const Login = () => {
 			localStorage.setItem('address',res.data.address+' '+res.data.city+' '+res.data.pincode)
 			history.push('/pastorder')
 			}
-			
 			
 		})
 

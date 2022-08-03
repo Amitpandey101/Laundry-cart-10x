@@ -99,7 +99,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+  
   const resetInputField = () => {
     setInputValue("");
     setShow(false);
@@ -155,7 +155,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+
   const resetInputFieldt = () => {
     setInputValuet("");
     setShowt(false);
@@ -211,7 +211,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+ 
   const resetInputFieldtr = () => {
     setInputValuetr("");
     setShowtr(false);
@@ -278,7 +278,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+
   const resetInputFieldj = () => {
     setInputValuej("");
     setShowj(false);
@@ -344,7 +344,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+
   const resetInputFieldb = () => {
     setInputValueb("");
     setShowb(false);
@@ -410,7 +410,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+  
   const resetInputFieldg = () => {
     setInputValueg("");
     setShowg(false);
@@ -476,7 +476,7 @@ const Createorder = () => {
     }
   };
 
-  // Reset Input Field handler
+
   const resetInputFieldo = () => {
     setInputValueo("");
     setShowo(false);
@@ -491,10 +491,7 @@ const Createorder = () => {
     setbo(0);
   };
 
-  // const [userEmail, setUserEmail] = useState("");
-  // useEffect(() => {
-  //   setUserEmail(localStorage.getItem("email"));
-  // }, []);
+
 
   const orderData = [
     {
@@ -552,10 +549,7 @@ const Createorder = () => {
       cost: wo + io + to + bo,
     },
   ];
-//   const [totalItempast ,setTotalItempast] = useState(0)
-// const itempastorderset = ()=>{
-//   setTotalItempast(0+price+priceb+priceg+pricej+priceo+pricet+pricetr)
-// }
+
 
   const [sub, setsub] = useState(0);
 
@@ -591,10 +585,10 @@ const Createorder = () => {
   const handleClosemodal = () => setshowmodal(false);
 	  const handleShowmodal = () => setshowmodal(true);
   
-  // totalItempast(price+priceb+priceg+pricej+priceo+pricet+pricetr)
+
     
  
-  //database connection and object
+
   const onconfirmhandler = () =>{
     
     const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90,totalItem:parseInt(price)+parseInt(priceb)+parseInt(priceg)+parseInt(pricej)+parseInt(priceo)+parseInt(pricet)+parseInt(pricetr)}
@@ -628,9 +622,8 @@ const Createorder = () => {
         style={{
           opacity,
           backgroundColor: isActive ? "" : ""
-          // color: isActive ? "white" : "",
-          // position: isActive ? "fixed" : ""
-          // display: isActive ? "none" : ""
+         
+        
         }}
       >
         
@@ -642,7 +635,7 @@ const Createorder = () => {
             </div>
 
             <div className="col-lg-11">
-              {/* Remaining Sections  */}
+              
               <div className="create-order-box">
                 <p>Create order </p>
                 <table className="table product-table" style={{ border: "1px solid #E0E0E0"}}>
@@ -672,7 +665,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/shirts.jpg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -822,7 +815,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/tshirts.jpg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -972,7 +965,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/trousers.jpg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -1122,7 +1115,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/jeans.jpg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -1272,7 +1265,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/boxers.jpg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -1422,7 +1415,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/joggers.jpg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -1572,7 +1565,7 @@ const Createorder = () => {
                             <img
                               className="product-img"
                               src="./assets/others.jpeg"
-                              alt="Image-icons"
+                              alt=""
                             />
                           </span>
                           <div className="product-name">
@@ -1889,7 +1882,7 @@ const Createorder = () => {
                         ShowSidebar();
                         handleClick();
                         handleShowmodal();
-                        // itempastorderset();
+                       
                     }}
                   >
                     Confirm
@@ -1914,7 +1907,7 @@ const Createorder = () => {
 
 			
       <div className="modal-create-order-box">
-      <img className='tick-img' src="./tickicon.svg" alt="Image-icons" />
+      <img className='tick-img' src="./tickicon.svg" alt="" />
       <div className="create-mod-head">
       <h3>you order is placed </h3>
         <h3>successfully!!!</h3>
