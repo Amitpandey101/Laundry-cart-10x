@@ -15,11 +15,14 @@ import { IconContext } from 'react-icons';
 import { getOverlayDirection } from 'react-bootstrap/esm/helpers';
 
 const Pastorder = () => {
+  const [address,setAddress] = useState('')
 	const [modalShow, setModalShow] = useState(false);
 	const [cancelorder, setcancelorder] = useState('Cancel Order');
 	const [order, setorder] = useState('');
 	const [summarydata, setsummarrydata] = useState();
-  const [orderId , setOrderId]= useState()
+  const [orderId , setOrderId]= useState();
+  const [subtotal, setsubtotal] = useState(0);
+  const [ordertotal, setordertotal] = useState(0);
 
 	const [summaryp, setsummaryp] = useState(true);
 	const datasummary = (value) => {
@@ -28,6 +31,8 @@ const Pastorder = () => {
 			return value === data._id;
 		});
 		setsummarrydata(result[0].order);
+    setsubtotal(result[0].Subtotal);
+    setordertotal(result[0].Total);
 		console.log(result[0].order);
 	};
 	const Showsummary = () => {
@@ -50,6 +55,7 @@ const Pastorder = () => {
 			.then((data) => {
 				setorderData(data.data.orders);
 			});
+      setAddress(localStorage.getItem('address'))
 	}, []);
 	console.log(orderData);
 
@@ -188,7 +194,7 @@ const Pastorder = () => {
                       <li className="d-flex flex-row justify-content-around align-items-center store-info-pastorders">
                         <div className="d-flex flex-column pr-2"> 
                           <b>Store Location</b>
-                          <p>JP Nager</p>
+                          <p>JP Nagar</p>
                           </div>
                          
 
@@ -196,29 +202,30 @@ const Pastorder = () => {
                         <div className="d-flex flex-column pr-2">
                           <div>
                             <b>Store address:</b>
-                            <div> xyz</div>
+                            <div> Near Phone booth, 10th road</div>
                           </div>
                         </div>
                         <div>
-                          <b>Phone: </b> <div>91 9999999999</div>
+                          <b>Phone: </b> <div>+91 999-999-9999</div>
                         </div>
                       </li>
                       <div className="table-summary-pastorders">
                 Order Details
             <div>
-            {summarydata && summarydata.map((item, key) => {
-                return item.quantity > 0 ? (
-                  <table class="table table-borderless">
+            <table class="table table-borderless">
                     <thead>
                       <tr>
                       <th scope="col" style={{ width: "35%" }}></th>
                             <th scope="col" style={{ width: "45%" }}></th>
+                            <th scope="col" style={{ width: "13%" }}></th>
                             <th scope="col" style={{ width: "7%" }}></th>
-                            <th scope="col" style={{ width: "10%" }}></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style={{ height: "10%" }}>
+            {summarydata && summarydata.map((item, key) => {
+                return item.quantity > 0 ? (
+
+                      <tr>
                         <th key={key} scope="row">
                           {item.productname}
                         </th>
@@ -250,20 +257,24 @@ const Pastorder = () => {
                           {item.total}
                        </th>
                       </tr>
-                    </tbody>
-                  </table>
+                    
                 ) : (
                   <div></div>
                 );
               })}
+          <tr>
+                        <td></td>
+                        <td></td>
+      <td >Sub total:</td>
+      <td ><b>{subtotal}</b></td>
+    </tr>
+              </tbody>
+                  </table>
             </div>  
-                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges-pastorders">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{orderData.Subtotal}</b></span>
-                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges-pastorders">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
-                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal-pastorders">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs {orderData.Total}</div>
+                <span className="d-flex flex-row justify-content-end align-items-start mr-3 pr-1 charges-pastorders">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
+                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal-pastorders">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs {ordertotal}</div>
                 <p className="pt-4">Address</p>
-                <div></div>
-               
-
+                <div className='address-box'><p>{address}</p></div>
               </div>
               <div className="d-flex flex-row justify-content-end align-items-center mr-4 pr-5 summaryend-pastorders">
                 <button className='Cancel-order-red btn' onClick={()=>{setModalShow(true);setsummaryp(true)}}> Cancel Order</button>
