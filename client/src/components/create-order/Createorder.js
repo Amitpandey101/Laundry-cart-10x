@@ -19,7 +19,6 @@ const address = {
 const Createorder = () => {
   const [store, setstore] = useState(false);
 
-  console.log("height=="+window.document.body.offsetHeight)
 
   const [sidebar, setSidebar] = useState(true);
 
@@ -568,13 +567,12 @@ const Createorder = () => {
       sum += x;
     });
     setsub(sum);
-    console.log(arr.length)
+    
   };
   
 
   const ShowSidebar = () => {
     setSidebar(!sidebar);
-    console.log(orderData);
   };
   const history = useHistory();
   const cancelorderHandler = () => {
@@ -585,7 +583,7 @@ const Createorder = () => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
-    // toggle
+    
     setIsActive((current) => !current);
   };
 
@@ -602,11 +600,9 @@ const Createorder = () => {
     const newOrder={date:Date.now(), order:orderData , Subtotal:sub , Total:sub+90,totalItem:parseInt(price)+parseInt(priceb)+parseInt(priceg)+parseInt(pricej)+parseInt(priceo)+parseInt(pricet)+parseInt(pricetr)}
     axios.post('http://localhost:3002/createorder',newOrder,{headers: { authorization: localStorage.getItem("token") }})
     .then((res) => {
-      console.log(res.data)
+    
       if(res.data.message.includes('successfully')){
-        console.log('order sent successfully')
-        console.log(newOrder)
-        // alert(res.data.message)
+     
       }else{
 
         alert(res.data.error)
@@ -649,8 +645,8 @@ const Createorder = () => {
               {/* Remaining Sections  */}
               <div className="create-order-box">
                 <p>Create order </p>
-                <table class="table product-table" style={{ border: "1px solid #E0E0E0"}}>
-                  <thead class="thead-dark">
+                <table className="table product-table" style={{ border: "1px solid #E0E0E0"}}>
+                  <thead className="thead-dark">
                     <tr>
                       <th scope="col" style={{ width: "35%" }}>
                         Product Types
@@ -670,13 +666,13 @@ const Createorder = () => {
                   <tbody>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span to="/" className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/shirts.jpg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -789,7 +785,7 @@ const Createorder = () => {
                           <div>
                             {price} x {w + i + t + b}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {price * (w + i + t + b)}
                             </span>
                           </div>
@@ -801,7 +797,7 @@ const Createorder = () => {
                         {show && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputField}
                             style={{
@@ -820,13 +816,13 @@ const Createorder = () => {
                     </tr>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/tshirts.jpg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -939,7 +935,7 @@ const Createorder = () => {
                           <div>
                             {pricet} x {wt + it + tt + bt}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {pricet * (wt + it + tt + bt)}
                             </span>
                           </div>
@@ -951,7 +947,7 @@ const Createorder = () => {
                         {showt && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputFieldt}
                             style={{
@@ -970,13 +966,13 @@ const Createorder = () => {
                     </tr>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span to="/" className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/trousers.jpg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -1089,7 +1085,7 @@ const Createorder = () => {
                           <div>
                             {pricetr} x {wtr + itr + ttr + btr}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {pricetr * (wtr + itr + ttr + btr)}
                             </span>
                           </div>
@@ -1101,7 +1097,7 @@ const Createorder = () => {
                         {showtr && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputFieldtr}
                             style={{
@@ -1120,13 +1116,13 @@ const Createorder = () => {
                     </tr>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span to="/" className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/jeans.jpg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -1239,7 +1235,7 @@ const Createorder = () => {
                           <div>
                             {pricej} x {wj + ij + tj + bj}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {pricej * (wj + ij + tj + bj)}
                             </span>
                           </div>
@@ -1251,7 +1247,7 @@ const Createorder = () => {
                         {showj && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputFieldj}
                             style={{
@@ -1270,13 +1266,13 @@ const Createorder = () => {
                     </tr>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span to="/" className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/boxers.jpg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -1389,7 +1385,7 @@ const Createorder = () => {
                           <div>
                             {priceg} x {wg + ig + tg + bg}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {priceg * (wg + ig + tg + bg)}
                             </span>
                           </div>
@@ -1401,7 +1397,7 @@ const Createorder = () => {
                         {showg && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputFieldg}
                             style={{
@@ -1420,13 +1416,13 @@ const Createorder = () => {
                     </tr>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span to="/" className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/joggers.jpg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -1539,7 +1535,7 @@ const Createorder = () => {
                           <div>
                             {priceb} x {wb + ib + tb + bb}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {priceb * (wb + ib + tb + bb)}
                             </span>
                           </div>
@@ -1551,7 +1547,7 @@ const Createorder = () => {
                         {showb && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputFieldb}
                             style={{
@@ -1570,13 +1566,13 @@ const Createorder = () => {
                     </tr>
                     <tr>
                       <th scope="row" className="product-row">
-                        {" "}
+                      
                         <span to="/" className="nav-link cust-link-product">
                           <span className="user-acc">
                             <img
                               className="product-img"
                               src="./assets/others.jpeg"
-                              alt=""
+                              alt="Image-icons"
                             />
                           </span>
                           <div className="product-name">
@@ -1689,7 +1685,7 @@ const Createorder = () => {
                           <div>
                             {priceo} x {wo + io + to + bo}=
                             <span className="totalvalue">
-                              {" "}
+                            
                               {priceo * (wo + io + to + bo)}
                             </span>
                           </div>
@@ -1701,7 +1697,7 @@ const Createorder = () => {
                         {showo && (
                           <button
                             type="button"
-                            class="btn reset"
+                            className="btn reset"
                             id="reset"
                             onClick={resetInputFieldo}
                             style={{
@@ -1739,7 +1735,7 @@ const Createorder = () => {
                   </button>
                   <button
                     type="button"
-                    class="btn"
+                    className="btn"
                     style={{
                       border: "1px solid #5861AE",
                       backgroundColor: "#5861AE",
@@ -1806,7 +1802,7 @@ const Createorder = () => {
               <div className="table-summary">
                 Order Details
                 <div>
-                <table class="table table-borderless">
+                <table className="table table-borderless">
                         <thead>
                           <tr>
                             <th scope="col" style={{ width: "35%"}}></th>
@@ -1819,12 +1815,12 @@ const Createorder = () => {
                   {orderData.map((item, key) => {
                     return item.quantity > 0 ? (
                       
-                          <tr >
-                            <th key={key} scope="row">
+                          <tr key={key}>
+                            <th  scope="row">
                               {item.productname}
                             </th>
                             <th
-                              key={key}
+                              
                               className="d-flex flex-row mt-1 services"
                             >
                               {item.washtype.Washing > 0 ? (
@@ -1840,12 +1836,12 @@ const Createorder = () => {
                                 <i>Chemicalwash</i>
                               ) : null}
                             </th>
-                            <th key={key}>
+                           
                               {item.quantity}x{item.cost}=
-                            </th>
+                          
 
                             <th
-                              key={key}
+                              
                               style={{ color: "#5861AE", fontSize: "larger" }}
                             >
                               {item.total}
@@ -1854,7 +1850,7 @@ const Createorder = () => {
                           </tr>
                        
                     ) : (
-                      <div></div>
+                      <tr key={Math.random()*10}></tr>
                     );
                   })}
                       <tr>
@@ -1918,7 +1914,7 @@ const Createorder = () => {
 
 			
       <div className="modal-create-order-box">
-      <img className='tick-img' src="./tickicon.svg" alt="" />
+      <img className='tick-img' src="./tickicon.svg" alt="Image-icons" />
       <div className="create-mod-head">
       <h3>you order is placed </h3>
         <h3>successfully!!!</h3>

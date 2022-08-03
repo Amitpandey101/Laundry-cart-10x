@@ -30,7 +30,7 @@ const Pastorder = () => {
     setsummarrydata(result[0].order);
     setsubtotal(result[0].Subtotal);
     setordertotal(result[0].Total);
-    console.log(result[0].order);
+  
   };
   const Showsummary = () => {
     setsummaryp(!summaryp);
@@ -114,7 +114,7 @@ const Pastorder = () => {
             {/* Remaining Sections  */}
 
             <div className="past-table-order">
-              {orderData.length>0 ? (<table class="table table-striped ">
+              {orderData.length>0 ? (<table className="table table-striped ">
                 <thead className="thead-dark">
                   <tr>
                     <th scope="col">Order id</th>
@@ -131,8 +131,8 @@ const Pastorder = () => {
                 </thead>
                 <tbody>
                   {orderData &&
-                    orderData.map((order) => (
-                      <tr>
+                    orderData.map((order,idx) => (
+                      <tr key={idx}>
                         <td>{order._id}</td>
                         <td>{order.date}</td>
                         <td>Jp Nagar</td>
@@ -167,7 +167,7 @@ const Pastorder = () => {
                             onClick={() => {
                               setOrderId(order._id);
                               datasummary(order._id);
-                              // Showsummary();
+                              
                               setsummaryp(false);
                             }}
                           />
@@ -216,7 +216,7 @@ const Pastorder = () => {
             <div className="table-summary-pastorders">
               Order Details
               <div>
-                <table class="table table-borderless">
+                <table className="table table-borderless">
                   <thead>
                     <tr>
                       <th scope="col" style={{ width: "35%" }}></th>
@@ -229,12 +229,12 @@ const Pastorder = () => {
                     {summarydata &&
                       summarydata.map((item, key) => {
                         return item.quantity > 0 ? (
-                          <tr>
-                            <th key={key} scope="row">
+                          <tr key={key}>
+                            <th  scope="row">
                               {item.productname}
                             </th>
                             <th
-                              key={key}
+                            
                               className="d-flex flex-row mt-1 services-pastorders"
                             >
                               {item.washtype.Washing > 0 ? (
@@ -250,19 +250,19 @@ const Pastorder = () => {
                                 <i>Chemicalwash</i>
                               ) : null}
                             </th>
-                            <th key={key}>
+                            <th >
                               {item.quantity}x{item.cost}=
                             </th>
 
                             <th
-                              key={key}
+                              
                               style={{ color: "#5861AE", fontSize: "larger" }}
                             >
                               {item.total}
                             </th>
                           </tr>
                         ) : (
-                          <div></div>
+                          <tr key={Math.random()*10}></tr>
                         );
                       })}
                     <tr>
