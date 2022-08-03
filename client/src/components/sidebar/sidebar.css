@@ -1,8 +1,10 @@
-
+.min-h{
+    position: relative;
+    min-height: 100vh;
+}
 
 .sidebar {
   position: fixed;
- 
   left: 0px;
   width: 57px;
   min-height: 933px;

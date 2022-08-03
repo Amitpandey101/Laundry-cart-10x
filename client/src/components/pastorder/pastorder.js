@@ -19,9 +19,11 @@ const Pastorder = () => {
 	const [cancelorder, setcancelorder] = useState('Cancel Order');
 	const [order, setorder] = useState('');
 	const [summarydata, setsummarrydata] = useState();
+  const [orderId , setOrderId]= useState()
 
 	const [summaryp, setsummaryp] = useState(true);
 	const datasummary = (value) => {
+    setOrderId(value)
 		const result = orderData.filter((data) => {
 			return value === data._id;
 		});
@@ -49,38 +51,39 @@ const Pastorder = () => {
 	console.log(orderData);
 
   const viewChangeHandler=(tar)=>{
+    
     axios
       .delete('http://localhost:3002/deleteorder', {
         data:{data:tar} , headers: { authorization: localStorage.getItem("token") },
       }).then((res)=>{
       
-       setorderData(res.data.remorders)
+       setorderData(res.data.rem)
       })
     }
 
     function MyVerticallyCenteredModal(props) {
       return (
-        <Modal className="modal" {...props}>
-          <Modal.Header className="popupheader">
-            <Modal.Title id="contained-modal-title-vcenter">
-              <h4>
-                Alert &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                <CloseButton />{" "}
-              </h4>
-              {/* <CloseButton /> */}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>Are you sure you want to cancel the order No:order 1</p>
-            <img className="alertimage" src="red-alert.jpg" alt="" />
-          </Modal.Body>
-          <Modal.Footer>
-            <td onClick={()=>{props.onHide();setsummaryp(!summaryp)}} animation={false}>
-              {" "}
-              <button className="buttonalign">Proceed</button>
-            </td>
-          </Modal.Footer>
-        </Modal>
+        <Modal
+        
+       {...props}
+        backdrop="false"
+        keyboard={false}
+		className='modal'
+      >
+        <Modal.Header className='modalnewHeader' closeButton>
+          <Modal.Title >Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='text-capitalize modal-body-main-past'>
+			<img className='alert-img' src="./red-alert.jpg" alt="" />
+     <p className='text-align-center'> Are you sure want to cancel the order No: {orderId}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className='cancel-orders-btn' variant="secondary" onClick={()=>{viewChangeHandler(orderId);setModalShow(false);setsummaryp(true)}} >
+            proceed
+          </button>
+  
+        </Modal.Footer>
+      </Modal>
       );
     }
 
@@ -91,7 +94,7 @@ const Pastorder = () => {
 
 
 <Header2></Header2>
-        <div className="box">
+        <div className="box min-h">
           <div className="row ">
             <div className="col-lg-1 col-md-1 p-0">
               <Sidebar></Sidebar>
@@ -131,13 +134,13 @@ const Pastorder = () => {
 							<td
 								style={{ color: 'red', cursor: 'pointer' }}
 								variant="secondary"
-								onClick={() => viewChangeHandler(order._id)}
 							>
-								{cancelorder}
+								<span className='cancel-past-order' onClick={()=>{setModalShow(true);setOrderId(order._id)}}>Cancel Order</span>
 							</td>
 							<MyVerticallyCenteredModal
 								show={modalShow}
 								onHide={() => setModalShow(false)}
+
 							/>
 							<td>
 								<img
@@ -145,8 +148,10 @@ const Pastorder = () => {
 									src="eye.png"
 									alt=""
 									onClick={() => {
+                    setOrderId(order._id)
 										datasummary(order._id);
-										Showsummary();
+										// Showsummary();
+                    setsummaryp(false)
 									}}
 								/>
 							</td>
@@ -198,7 +203,7 @@ const Pastorder = () => {
                       <div className="table-summary-pastorders">
                 Order Details
             <div>
-            {summarydata.map((item, key) => {
+            {summarydata && summarydata.map((item, key) => {
                 return item.quantity > 0 ? (
                   <table class="table table-borderless">
                     <thead>
@@ -257,31 +262,9 @@ const Pastorder = () => {
                
 
               </div>
-              <div className="d-flex flex-row justify-content-end align-items-center mr-4 pr-5 summaryend-pastorders"><button
-                    type="button"
-                    className="btn"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"
-                    style={{
-                      border: "1px solid #5861AE",
-                      backgroundColor: "#5861AE",
-                      color: "#fff",
-                      padding: "2px 20px",
-                      fontSize: "16px",
-                      cursor: "pointer",
-                    }}
-                    // onClick={()=>{
-                    //   onconfirmhandler();
-                    //     SetOpacity(1);
-                    //     ShowSidebar();
-                    //     handleClick();
-                    //     handleShowmodal();
-                     
-                    // }}
-                  >
-                    Confirm
-                  </button></div>
+              <div className="d-flex flex-row justify-content-end align-items-center mr-4 pr-5 summaryend-pastorders">
+                <button className='Cancel-order-red' onClick={()=>{setModalShow(true);setsummaryp(true)}}> Cancel Order</button>
+                </div>
             </ul>
           </nav>
         </IconContext.Provider>

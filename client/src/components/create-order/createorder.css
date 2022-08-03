@@ -207,3 +207,12 @@ input::-webkit-inner-spin-button {
   flex-direction: column; 
   text-align: center;
 }
+.create-order-box{
+  padding: .5rem 2rem;
+}
+.div-height{
+  max-height: 101vh;
+}
+.create-2-main-box{
+ 
+}

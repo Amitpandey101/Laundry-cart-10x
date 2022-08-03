@@ -173,3 +173,33 @@ input::-webkit-inner-spin-button {
   background-color: #F4F4F4;
   width: 100%;
 }
+.cancel-past-order{
+ 
+  color: rgb(221, 16, 16);
+}
+.cancel-past-order:hover{
+  cursor: pointer;
+}
+.alert-img{
+  width: 80px;
+}
+.modal-body-main-past{
+  display: flex;
+  justify-content: center;
+}
+.cancel-orders-btn{
+  padding: .5rem 1rem;
+  background-color: #5861AE;
+  color: white;
+  border: none;
+  border-radius:4px ;
+  margin: auto;
+}
+.Cancel-order-red{
+  padding: .5rem 1rem;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius:4px ;
+  margin-top: 5rem;
+}

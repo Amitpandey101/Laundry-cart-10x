@@ -625,8 +625,9 @@ const Createorder = () => {
 
   return (
     <>
+    <Header2></Header2>
       <div
-      className="page-document"
+      className="page-document div-height"
         style={{
           opacity,
           backgroundColor: isActive ? "" : ""
@@ -635,16 +636,17 @@ const Createorder = () => {
           // display: isActive ? "none" : ""
         }}
       >
-        <Header2></Header2>
-        <div className="box">
-          <div className="row ">
+        
+        
+        <div className="create-2-main-box">
+          <div className="row">
             <div className="col-lg-1 col-md-1 p-0">
-              <Sidebar></Sidebar>
+            <Sidebar></Sidebar>
             </div>
 
             <div className="col-lg-11">
               {/* Remaining Sections  */}
-              <div className="container">
+              <div className="create-order-box">
                 <p>Create order </p>
                 <table class="table product-table" style={{ border: "1px solid #E0E0E0" }}>
                   <thead class="thead-dark">

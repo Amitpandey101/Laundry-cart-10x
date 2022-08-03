@@ -23,7 +23,7 @@ router.get("/pastorder",pastorder)
 
 router.post('/createorder',createorder)
 
-router.delete("/deleteorder/:_id",deleteorder)
+router.delete("/deleteorder",deleteorder)
 
 
 router.get('/',(req,res)=>{

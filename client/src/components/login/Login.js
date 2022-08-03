@@ -100,7 +100,7 @@ const Login = () => {
 			}else{
 			localStorage.setItem('name',res.data.name)
 			localStorage.setItem('token',res.data.token)
-			localStorage.setItem('email',res.data.email)
+			localStorage.setItem('address',res.data.address+' '+res.data.city+' '+res.data.pincode)
 			history.push('/pastorder')
 			}
 			
