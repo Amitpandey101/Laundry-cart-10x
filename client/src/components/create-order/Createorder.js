@@ -648,7 +648,7 @@ const Createorder = () => {
               {/* Remaining Sections  */}
               <div className="create-order-box">
                 <p>Create order </p>
-                <table class="table product-table" style={{ border: "1px solid #E0E0E0" }}>
+                <table class="table product-table" style={{ border: "1px solid #E0E0E0"}}>
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col" style={{ width: "35%" }}>

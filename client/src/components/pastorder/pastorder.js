@@ -34,6 +34,9 @@ const Pastorder = () => {
 		setsummaryp(!summaryp);
 	};
 
+  // const heightdocument = window.screen.height
+  // console.log(heightdocument)
+
 	const history = useHistory();
 	const [orderData, setorderData] = useState([]);
 	useEffect(() => {
@@ -79,7 +82,7 @@ const Pastorder = () => {
         </Modal.Body>
         <Modal.Footer>
           <button className='cancel-orders-btn' variant="secondary" onClick={()=>{viewChangeHandler(orderId);setModalShow(false);setsummaryp(true)}} >
-            proceed
+            Proceed
           </button>
   
         </Modal.Footer>
@@ -170,9 +173,9 @@ const Pastorder = () => {
 
 
         <IconContext.Provider value={{ color: "#fff" }}>
-                  <nav className={summaryp ? "nav-menu active" : "nav-menu"}>
-                    <ul className="nav-menu-items">
-                      <li className="navbar-toggle">
+                  <nav className={summaryp ? "nav-menu-pastorders active" : "nav-menu-pastorders"} >
+                    <ul className="nav-menu-items-pastorders">
+                      <li className="navbar-toggle-pastorders">
                         <p>Summary</p>
                         <Link
                           to="#"
@@ -208,10 +211,10 @@ const Pastorder = () => {
                   <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col" ></th>
-                        <th scope="col" ></th>
-                        <th scope="col" ></th>
-                        <th scope="col"></th>
+                      <th scope="col" style={{ width: "35%" }}></th>
+                            <th scope="col" style={{ width: "45%" }}></th>
+                            <th scope="col" style={{ width: "7%" }}></th>
+                            <th scope="col" style={{ width: "10%" }}></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -254,17 +257,18 @@ const Pastorder = () => {
                 );
               })}
             </div>  
-                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges-pastorders">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>xyz</b></span>
+                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges-pastorders">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{orderData.Subtotal}</b></span>
                 <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges-pastorders">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>
-                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal-pastorders">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rsxyz</div>
+                <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal-pastorders">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs {orderData.Total}</div>
                 <p className="pt-4">Address</p>
                 <div></div>
                
 
               </div>
               <div className="d-flex flex-row justify-content-end align-items-center mr-4 pr-5 summaryend-pastorders">
-                <button className='Cancel-order-red' onClick={()=>{setModalShow(true);setsummaryp(true)}}> Cancel Order</button>
+                <button className='Cancel-order-red btn' onClick={()=>{setModalShow(true);setsummaryp(true)}}> Cancel Order</button>
                 </div>
+             
             </ul>
           </nav>
         </IconContext.Provider>
