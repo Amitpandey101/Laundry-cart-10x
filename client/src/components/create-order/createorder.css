@@ -66,8 +66,9 @@ input::-webkit-inner-spin-button {
   
   .nav-menu {
     background-color: #FFF;
+    z-index: 1;
     width: 926px;
-    height: 886px;
+    height: 1080px;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -77,7 +78,7 @@ input::-webkit-inner-spin-button {
   }
   
   .nav-menu.active {
-    left: 100%;
+    right: 100%;
     transition: 350ms;
   }
   
@@ -135,11 +136,11 @@ input::-webkit-inner-spin-button {
     height: 98px;
 }
 
-.table thead th,td{
+.product-table thead th,.product-table td{
   border: none;
 }
-.table td, .table th{
-  border: none;
+.product-table td, .product-table th{
+  /* border: none; */
   border-bottom: 1px solid rgb(158, 156, 156);
 }
 .table-borderless td, .table-borderless th{
@@ -237,4 +238,14 @@ input::-webkit-inner-spin-button {
 .cancel-orders-btn:hover{
   background-color: #4f57a3e2;
   color: white;
+}
+.create-order-buttons{
+  padding: 3%;
+}
+
+.table thead th {
+  border: none;
+}
+.table tbody tr {
+  border-bottom: 1px solid rgb(209, 209, 209);
 }

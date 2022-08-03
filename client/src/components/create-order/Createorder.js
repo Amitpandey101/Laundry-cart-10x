@@ -13,6 +13,7 @@ import Modal from 'react-bootstrap/Modal';
 
 const address = {
   JPNagar: "Near Phone booth, 10th road,",
+  phone: "+91 999-999-9999"
 };
 
 const Createorder = () => {
@@ -1720,7 +1721,7 @@ const Createorder = () => {
                   </tbody>
                 </table>
 
-                <div className="d-flex flex-row justify-content-end mb-3">
+                <div className="d-flex flex-row justify-content-end mb-3 create-order-buttons">
                   <button
                     type="button"
                     className="btn mr-3"
@@ -1739,9 +1740,6 @@ const Createorder = () => {
                   <button
                     type="button"
                     class="btn"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"
                     style={{
                       border: "1px solid #5861AE",
                       backgroundColor: "#5861AE",
@@ -1802,25 +1800,26 @@ const Createorder = () => {
                   </div>
                 </div>
                 <div>
-                  <b>Phone: </b> {store && <div>91 9999999999</div>}
+                  <b>Phone: </b> {store && <div>{address.phone}</div>}
                 </div>
               </li>
               <div className="table-summary">
                 Order Details
                 <div>
-                  {orderData.map((item, key) => {
-                    return item.quantity > 0 ? (
-                      <table class="table table-borderless">
+                <table class="table table-borderless">
                         <thead>
                           <tr>
-                            <th scope="col" style={{ width: "35%" }}></th>
+                            <th scope="col" style={{ width: "35%"}}></th>
                             <th scope="col" style={{ width: "45%" }}></th>
+                            <th scope="col" style={{ width: "13%" }}></th>
                             <th scope="col" style={{ width: "7%" }}></th>
-                            <th scope="col" style={{ width: "10%" }}></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr style={{ height: "10%" }}>
+                  {orderData.map((item, key) => {
+                    return item.quantity > 0 ? (
+                      
+                          <tr >
                             <th key={key} scope="row">
                               {item.productname}
                             </th>
@@ -1850,18 +1849,24 @@ const Createorder = () => {
                               style={{ color: "#5861AE", fontSize: "larger" }}
                             >
                               {item.total}
-                              {/* {setsub(item.total)} */}
+      
                             </th>
                           </tr>
-                        </tbody>
-                      </table>
+                       
                     ) : (
                       <div></div>
                     );
                   })}
+                      <tr>
+                        <td></td>
+                        <td></td>
+      <td >Sub total:</td>
+      <td ><b>{sub}</b></td>
+    </tr>
+                   </tbody>
+                      </table>
                 </div>
-                <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Sub total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{sub}</b></span>
-                {store && <span className="d-flex flex-row justify-content-end align-items-center mr-4 pr-3 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>}
+                {store && <span className="d-flex flex-row justify-content-end align-items-start mr-3 pr-1 charges">Pickup charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>90</b></span>}
                 {store && <div className="d-flex flex-row justify-content-end align-items-center mr-5 pr-3 grandtotal">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs{sub+90}</div>}
                 <p className="pt-4">Address</p>
                 <div></div>
