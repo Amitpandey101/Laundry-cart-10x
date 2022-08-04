@@ -1,0 +1,18 @@
+
+.part-1 {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	align-items: center;
+    flex-direction: row;
+    background-color: #b9c0fd1a;
+}
+.head-2 {
+	color: #5861ae;
+	font-weight: 700;
+	font-size: 62px;
+}
+.laundry-img{
+    width: 300px;
+    margin-right: 4rem;
+}

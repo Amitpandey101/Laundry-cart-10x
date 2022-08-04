@@ -1,0 +1,90 @@
+.past-table-order{
+  display: block;
+  padding: 2rem;
+  margin-right: 2rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+*{
+    -ms-overflow-style: none;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .store-info-pastorders{
+    background-color: #F4F9FF;
+    height: 98px;
+}
+
+.table-summary-pastorders{
+  margin: 50px;
+}
+.services-pastorders{
+  font-weight: 400;
+}
+.grandtotal-pastorders{
+  height: 50px;
+  background-color: #5861AE;
+  width: 100%;
+  font-size:x-large;
+  font-weight: 600;
+  color: #FFF;
+}
+.charges-pastorders{
+  height: 50px;
+}
+
+.summaryend-pastorders{
+  height: 80px;
+  background-color: #F4F4F4;
+  width: 100%;
+}
+
+.nav-menu-pastorders {
+  background-color: #FFF;
+  z-index: 1;
+  width: 926px;
+  height: 1080px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: 850ms;
+}
+
+.nav-menu-pastorders.active {
+  right: 100%;
+  transition: 850ms;
+}
+
+.nav-menu-items-pastorders {
+  width: 100%;
+}
+
+.navbar-toggle-pastorders {
+  background-color: #5861AE;
+  color: #FFF;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+  padding-left: 2%;
+  font-size:xx-large;
+}
+.address-box{
+  width: 30%;
+  border: 1px solid rgb(237, 237, 237);
+  padding: 1rem;
+  box-shadow: #5861AE;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 255, .2);
+}
+.address-add{
+  display: inline-block;
+  color:#5861AE ;
+}
